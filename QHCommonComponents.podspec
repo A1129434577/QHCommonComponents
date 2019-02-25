@@ -13,7 +13,12 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
 
-  s.source_files = 'QHCommonComponents/**/*'
+  s.subspec 'UIViewControllers' do |ss|
+    ss.subspec 'QHAlertController' do |sss|
+      sss.dependency 'CommonComponents/UIViewControllers/LBAlertController', '~> 0.0.1'
+      sss.source_files = 'CommonComponents/UIViewControllers/QHAlertController/**/*'
+    end
+  end
 
 
 end

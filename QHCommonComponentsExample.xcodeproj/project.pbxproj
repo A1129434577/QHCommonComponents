@@ -12,9 +12,14 @@
 		40D448022223E1A1009B77C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448012223E1A1009B77C7 /* main.m */; };
 		40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4480A2223E1F1009B77C7 /* AppDelegate.m */; };
 		40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */; };
+		40D448152223E807009B77C7 /* QHAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448142223E807009B77C7 /* QHAlertController.m */; };
+		40D448172223E827009B77C7 /* QHCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40D448162223E827009B77C7 /* QHCommonComponents.podspec */; };
+		FA2A5150664FBA647E340D5A /* libPods-QHCommonComponentsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QHCommonComponentsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
 		40D447EF2223E1A0009B77C7 /* QHCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D447FB2223E1A1009B77C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40D447FE2223E1A1009B77C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -24,6 +29,10 @@
 		40D4480A2223E1F1009B77C7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHComponentsExampleVC.m; sourceTree = "<group>"; };
 		40D4480D2223E1F1009B77C7 /* QHComponentsExampleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHComponentsExampleVC.h; sourceTree = "<group>"; };
+		40D448132223E807009B77C7 /* QHAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHAlertController.h; sourceTree = "<group>"; };
+		40D448142223E807009B77C7 /* QHAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHAlertController.m; sourceTree = "<group>"; };
+		40D448162223E827009B77C7 /* QHCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QHCommonComponents.podspec; sourceTree = "<group>"; };
+		D6061A0B3F720C52291EAF92 /* Pods-QHCommonComponentsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +40,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2A5150664FBA647E340D5A /* libPods-QHCommonComponentsExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20BFC84A1BB5760E857F446C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6061A0B3F720C52291EAF92 /* Pods-QHCommonComponentsExample.debug.xcconfig */,
+				3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		40D447E62223E1A0009B77C7 = {
 			isa = PBXGroup;
 			children = (
+				40D448162223E827009B77C7 /* QHCommonComponents.podspec */,
+				40D448102223E807009B77C7 /* QHCommonComponents */,
 				40D447F12223E1A0009B77C7 /* QHCommonComponentsExample */,
 				40D447F02223E1A0009B77C7 /* Products */,
+				20BFC84A1BB5760E857F446C /* Pods */,
+				5DB0B50428CCE8C1EB0A010B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +107,39 @@
 			path = QHComponentsExampleVC;
 			sourceTree = "<group>";
 		};
+		40D448102223E807009B77C7 /* QHCommonComponents */ = {
+			isa = PBXGroup;
+			children = (
+				40D448112223E807009B77C7 /* UIViewControllers */,
+			);
+			path = QHCommonComponents;
+			sourceTree = SOURCE_ROOT;
+		};
+		40D448112223E807009B77C7 /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				40D448122223E807009B77C7 /* QHAlertController */,
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		40D448122223E807009B77C7 /* QHAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				40D448132223E807009B77C7 /* QHAlertController.h */,
+				40D448142223E807009B77C7 /* QHAlertController.m */,
+			);
+			path = QHAlertController;
+			sourceTree = "<group>";
+		};
+		5DB0B50428CCE8C1EB0A010B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +147,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40D448052223E1A1009B77C7 /* Build configuration list for PBXNativeTarget "QHCommonComponentsExample" */;
 			buildPhases = (
+				5A0707A65BF36A2BBBF7B884 /* [CP] Check Pods Manifest.lock */,
 				40D447EB2223E1A0009B77C7 /* Sources */,
 				40D447EC2223E1A0009B77C7 /* Frameworks */,
 				40D447ED2223E1A0009B77C7 /* Resources */,
@@ -141,12 +198,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D448172223E827009B77C7 /* QHCommonComponents.podspec in Resources */,
 				40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */,
 				40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A0707A65BF36A2BBBF7B884 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QHCommonComponentsExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40D447EB2223E1A0009B77C7 /* Sources */ = {
@@ -156,6 +239,7 @@
 				40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */,
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D448022223E1A1009B77C7 /* main.m in Sources */,
+				40D448152223E807009B77C7 /* QHAlertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +371,7 @@
 		};
 		40D448062223E1A1009B77C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6061A0B3F720C52291EAF92 /* Pods-QHCommonComponentsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +389,7 @@
 		};
 		40D448072223E1A1009B77C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

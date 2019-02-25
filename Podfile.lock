@@ -1,0 +1,21 @@
+PODS:
+  - CommonComponents/Macros (0.0.1)
+  - CommonComponents/NSObjects/LBCustemPresentTransitions (0.0.1):
+    - CommonComponents/Macros
+  - CommonComponents/UIViewControllers/LBAlertController (0.0.1):
+    - CommonComponents/Macros
+    - CommonComponents/NSObjects/LBCustemPresentTransitions
+
+DEPENDENCIES:
+  - CommonComponents/UIViewControllers/LBAlertController (~> 0.0.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CommonComponents
+
+SPEC CHECKSUMS:
+  CommonComponents: 8d91a0135152e6200f30f9a050a993ebaf3601fa
+
+PODFILE CHECKSUM: 0c2fac70adf9c1bea75cfcb8435199b2d3e6f8b9
+
+COCOAPODS: 1.5.3
