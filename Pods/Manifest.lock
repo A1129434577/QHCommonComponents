@@ -46,17 +46,23 @@ PODS:
     - CommonComponents/UIViews/LBFunctionalTextField
   - CommonComponents/UIViews/UIViewInit (0.0.1):
     - CommonComponents/Macros
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
 
 DEPENDENCIES:
   - CommonComponents (~> 0.0.1)
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CommonComponents
+    - SDWebImage
 
 SPEC CHECKSUMS:
   CommonComponents: 8d91a0135152e6200f30f9a050a993ebaf3601fa
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
 
-PODFILE CHECKSUM: b777bcf4e627293e6765f2c13ff65d6107f76098
+PODFILE CHECKSUM: e763f544adf7dd4996cf14a2671d95bbf0b093f5
 
 COCOAPODS: 1.5.3

@@ -12,17 +12,17 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
 
-  s.subspec 'UIViewControllers' do |ss|
+  s.subspec 'QHUIViewControllers' do |ss|
     ss.subspec 'QHAlertController' do |sss|
       sss.dependency 'CommonComponents/UIViewControllers/LBAlertController', '~> 0.0.1'
-      sss.source_files = 'QHCommonComponents/**/*'
+      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHAlertController/**/*'
     end
   end
 
-  s.subspec 'NSObjects' do |ss|
+  s.subspec 'QHNSObjects' do |ss|
     ss.subspec 'QHEncryptHelper' do |sss|
       sss.dependency 'CommonComponents/NSObjects/LBEncrypt', '~> 0.0.1'
-      sss.source_files = 'QHCommonComponents/**/*'
+      sss.source_files = 'QHCommonComponents/QHNSObjects/QHEncryptHelper/**/*'
     end
   end
 

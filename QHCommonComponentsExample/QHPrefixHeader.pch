@@ -1,0 +1,16 @@
+//
+//  QHPrefixHeader.pch
+//  QHCommonComponentsExample
+//
+//  Created by 刘彬 on 2019/2/25.
+//  Copyright © 2019 BIN. All rights reserved.
+//
+
+#ifndef QHPrefixHeader_pch
+#define QHPrefixHeader_pch
+
+#import "QHUIMacro.h"
+#import "QHSystemMacro.h"
+#import "QHFunctionMacro.h"
+
+#endif /* QHPrefixHeader_pch */
