@@ -8,15 +8,21 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/A1129434577'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'A1129434577' => '1129434577@qq.com' }
-  s.source           = { :git => 'https://github.com/A1129434577/QHCommonComponents.git', :tag => s.version.to_s }
-  #s.source           = { :git => "/Users/liubin/Desktop/QHCommonComponentsExample", :tag => s.version.to_s }
+  s.source           = { :git => "/Users/liubin/Desktop/QHCommonComponentsExample", :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
 
 
   s.subspec 'UIViewControllers' do |ss|
     ss.subspec 'QHAlertController' do |sss|
-      sss.dependency 'CommonComponents/UIViewControllers/LBAlertController', '~> 0.0.1'
-      sss.source_files = 'QHCommonComponents/UIViewControllers/QHAlertController/**/*'
+      sss.dependency 'CommonComponents/QHUIViewControllers/LBAlertController', '~> 0.0.1'
+      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHAlertController/**/*'
+    end
+  end
+
+  s.subspec 'NSObjects' do |ss|
+    ss.subspec 'QHEncryptHelper' do |sss|
+      sss.dependency 'CommonComponents/NSObjects/LBEncrypt', '~> 0.0.1'
+      sss.source_files = 'QHCommonComponents/QHNSObjects/QHEncryptHelper/**/*'
     end
   end
 
