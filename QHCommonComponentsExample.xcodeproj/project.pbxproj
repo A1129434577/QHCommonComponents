@@ -101,8 +101,8 @@
 		40D4480B2223E1F1009B77C7 /* QHComponentsExampleVC */ = {
 			isa = PBXGroup;
 			children = (
-				40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */,
 				40D4480D2223E1F1009B77C7 /* QHComponentsExampleVC.h */,
+				40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */,
 			);
 			path = QHComponentsExampleVC;
 			sourceTree = "<group>";
