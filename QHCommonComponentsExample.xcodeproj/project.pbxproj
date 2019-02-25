@@ -178,8 +178,8 @@
 		40D448322223FE3C009B77C7 /* QHEncryptHelper */ = {
 			isa = PBXGroup;
 			children = (
-				40D448332223FE3C009B77C7 /* QHEncrypt.m */,
 				40D448342223FE3C009B77C7 /* QHEncrypt.h */,
+				40D448332223FE3C009B77C7 /* QHEncrypt.m */,
 			);
 			path = QHEncryptHelper;
 			sourceTree = "<group>";
