@@ -16,7 +16,7 @@ TODO: Add long description of the pod here.
   s.subspec 'UIViewControllers' do |ss|
     ss.subspec 'QHAlertController' do |sss|
       sss.dependency 'CommonComponents/UIViewControllers/LBAlertController', '~> 0.0.1'
-      sss.source_files = 'CommonComponents/UIViewControllers/QHAlertController/**/*'
+      sss.source_files = 'QHCommonComponents/UIViewControllers/QHAlertController/**/*'
     end
   end
 
