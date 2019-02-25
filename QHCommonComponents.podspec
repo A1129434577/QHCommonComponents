@@ -15,14 +15,14 @@ TODO: Add long description of the pod here.
   s.subspec 'UIViewControllers' do |ss|
     ss.subspec 'QHAlertController' do |sss|
       sss.dependency 'CommonComponents/QHUIViewControllers/LBAlertController', '~> 0.0.1'
-      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHAlertController/**/*'
+      sss.source_files = 'QHCommonComponents/**/*'
     end
   end
 
   s.subspec 'NSObjects' do |ss|
     ss.subspec 'QHEncryptHelper' do |sss|
       sss.dependency 'CommonComponents/NSObjects/LBEncrypt', '~> 0.0.1'
-      sss.source_files = 'QHCommonComponents/QHNSObjects/QHEncryptHelper/**/*'
+      sss.source_files = 'QHCommonComponents/**/*'
     end
   end
 

@@ -13,8 +13,8 @@
 		40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4480A2223E1F1009B77C7 /* AppDelegate.m */; };
 		40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */; };
 		40D448172223E827009B77C7 /* QHCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40D448162223E827009B77C7 /* QHCommonComponents.podspec */; };
-		40D448252223F112009B77C7 /* QHEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4481F2223F112009B77C7 /* QHEncrypt.m */; };
-		40D448262223F112009B77C7 /* QHAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448242223F112009B77C7 /* QHAlertController.m */; };
+		40D4482F2223FAD8009B77C7 /* QHEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448292223FAD8009B77C7 /* QHEncrypt.m */; };
+		40D448302223FAD8009B77C7 /* QHAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4482E2223FAD8009B77C7 /* QHAlertController.m */; };
 		FA2A5150664FBA647E340D5A /* libPods-QHCommonComponentsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */; };
 /* End PBXBuildFile section */
 
@@ -31,10 +31,10 @@
 		40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHComponentsExampleVC.m; sourceTree = "<group>"; };
 		40D4480D2223E1F1009B77C7 /* QHComponentsExampleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHComponentsExampleVC.h; sourceTree = "<group>"; };
 		40D448162223E827009B77C7 /* QHCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QHCommonComponents.podspec; sourceTree = "<group>"; };
-		40D4481F2223F112009B77C7 /* QHEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHEncrypt.m; sourceTree = "<group>"; };
-		40D448202223F112009B77C7 /* QHEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHEncrypt.h; sourceTree = "<group>"; };
-		40D448232223F112009B77C7 /* QHAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHAlertController.h; sourceTree = "<group>"; };
-		40D448242223F112009B77C7 /* QHAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHAlertController.m; sourceTree = "<group>"; };
+		40D448292223FAD8009B77C7 /* QHEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHEncrypt.m; sourceTree = "<group>"; };
+		40D4482A2223FAD8009B77C7 /* QHEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHEncrypt.h; sourceTree = "<group>"; };
+		40D4482D2223FAD8009B77C7 /* QHAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHAlertController.h; sourceTree = "<group>"; };
+		40D4482E2223FAD8009B77C7 /* QHAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHAlertController.m; sourceTree = "<group>"; };
 		D6061A0B3F720C52291EAF92 /* Pods-QHCommonComponentsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,42 +113,42 @@
 		40D448102223E807009B77C7 /* QHCommonComponents */ = {
 			isa = PBXGroup;
 			children = (
-				40D4481D2223F112009B77C7 /* QHNSObjects */,
-				40D448212223F112009B77C7 /* QHUIViewControllers */,
+				40D448272223FAD8009B77C7 /* NSObjects */,
+				40D4482B2223FAD8009B77C7 /* UIViewControllers */,
 			);
 			path = QHCommonComponents;
 			sourceTree = SOURCE_ROOT;
 		};
-		40D4481D2223F112009B77C7 /* QHNSObjects */ = {
+		40D448272223FAD8009B77C7 /* NSObjects */ = {
 			isa = PBXGroup;
 			children = (
-				40D4481E2223F112009B77C7 /* QHEncryptHelper */,
+				40D448282223FAD8009B77C7 /* QHEncryptHelper */,
 			);
-			path = QHNSObjects;
+			path = NSObjects;
 			sourceTree = "<group>";
 		};
-		40D4481E2223F112009B77C7 /* QHEncryptHelper */ = {
+		40D448282223FAD8009B77C7 /* QHEncryptHelper */ = {
 			isa = PBXGroup;
 			children = (
-				40D4481F2223F112009B77C7 /* QHEncrypt.m */,
-				40D448202223F112009B77C7 /* QHEncrypt.h */,
+				40D448292223FAD8009B77C7 /* QHEncrypt.m */,
+				40D4482A2223FAD8009B77C7 /* QHEncrypt.h */,
 			);
 			path = QHEncryptHelper;
 			sourceTree = "<group>";
 		};
-		40D448212223F112009B77C7 /* QHUIViewControllers */ = {
+		40D4482B2223FAD8009B77C7 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				40D448222223F112009B77C7 /* QHAlertController */,
+				40D4482C2223FAD8009B77C7 /* QHAlertController */,
 			);
-			path = QHUIViewControllers;
+			path = UIViewControllers;
 			sourceTree = "<group>";
 		};
-		40D448222223F112009B77C7 /* QHAlertController */ = {
+		40D4482C2223FAD8009B77C7 /* QHAlertController */ = {
 			isa = PBXGroup;
 			children = (
-				40D448232223F112009B77C7 /* QHAlertController.h */,
-				40D448242223F112009B77C7 /* QHAlertController.m */,
+				40D4482D2223FAD8009B77C7 /* QHAlertController.h */,
+				40D4482E2223FAD8009B77C7 /* QHAlertController.m */,
 			);
 			path = QHAlertController;
 			sourceTree = "<group>";
@@ -257,9 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40D448252223F112009B77C7 /* QHEncrypt.m in Sources */,
+				40D4482F2223FAD8009B77C7 /* QHEncrypt.m in Sources */,
 				40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */,
-				40D448262223F112009B77C7 /* QHAlertController.m in Sources */,
+				40D448302223FAD8009B77C7 /* QHAlertController.m in Sources */,
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D448022223E1A1009B77C7 /* main.m in Sources */,
 			);
