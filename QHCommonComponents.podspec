@@ -8,7 +8,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/A1129434577'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'A1129434577' => '1129434577@qq.com' }
-  s.source           = { :git => "/Users/liubin/Desktop/QHCommonComponentsExample", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/A1129434577/QHCommonComponents.git", :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
 
 
