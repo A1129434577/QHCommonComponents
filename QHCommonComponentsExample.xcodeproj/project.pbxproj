@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4073705E2224E06C00F04A64 /* UIViewController+SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4073705C2224E06C00F04A64 /* UIViewController+SVProgressHUD.m */; };
+		407370682224E2D600F04A64 /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370622224E2D600F04A64 /* QRView.m */; };
+		407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370632224E2D600F04A64 /* lighten_s@3x.png */; };
+		4073706A2224E2D600F04A64 /* scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370652224E2D600F04A64 /* scan@3x.png */; };
+		4073706B2224E2D600F04A64 /* lighten@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370662224E2D600F04A64 /* lighten@3x.png */; };
+		4073706C2224E2D600F04A64 /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370672224E2D600F04A64 /* QRViewController.m */; };
 		40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FB2223E1A1009B77C7 /* Assets.xcassets */; };
 		40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */; };
 		40D448022223E1A1009B77C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448012223E1A1009B77C7 /* main.m */; };
@@ -42,6 +47,13 @@
 		3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
 		4073705C2224E06C00F04A64 /* UIViewController+SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SVProgressHUD.m"; sourceTree = "<group>"; };
 		4073705D2224E06C00F04A64 /* UIViewController+SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SVProgressHUD.h"; sourceTree = "<group>"; };
+		407370602224E2D600F04A64 /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
+		407370622224E2D600F04A64 /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
+		407370632224E2D600F04A64 /* lighten_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighten_s@3x.png"; sourceTree = "<group>"; };
+		407370642224E2D600F04A64 /* QRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRView.h; sourceTree = "<group>"; };
+		407370652224E2D600F04A64 /* scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan@3x.png"; sourceTree = "<group>"; };
+		407370662224E2D600F04A64 /* lighten@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighten@3x.png"; sourceTree = "<group>"; };
+		407370672224E2D600F04A64 /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
 		40D447EF2223E1A0009B77C7 /* QHCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D447FB2223E1A1009B77C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40D447FE2223E1A1009B77C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,6 +126,28 @@
 				4073705C2224E06C00F04A64 /* UIViewController+SVProgressHUD.m */,
 			);
 			path = "UIViewController+SVProgressHUD";
+			sourceTree = "<group>";
+		};
+		4073705F2224E2D600F04A64 /* QHQRViewController */ = {
+			isa = PBXGroup;
+			children = (
+				407370602224E2D600F04A64 /* QRViewController.h */,
+				407370672224E2D600F04A64 /* QRViewController.m */,
+				407370612224E2D600F04A64 /* QRView */,
+			);
+			path = QHQRViewController;
+			sourceTree = "<group>";
+		};
+		407370612224E2D600F04A64 /* QRView */ = {
+			isa = PBXGroup;
+			children = (
+				407370642224E2D600F04A64 /* QRView.h */,
+				407370622224E2D600F04A64 /* QRView.m */,
+				407370632224E2D600F04A64 /* lighten_s@3x.png */,
+				407370652224E2D600F04A64 /* scan@3x.png */,
+				407370662224E2D600F04A64 /* lighten@3x.png */,
+			);
+			path = QRView;
 			sourceTree = "<group>";
 		};
 		40D447E62223E1A0009B77C7 = {
@@ -199,6 +233,7 @@
 		40D448352223FE3C009B77C7 /* QHUIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4073705F2224E2D600F04A64 /* QHQRViewController */,
 				4073705B2224E06C00F04A64 /* UIViewController+SVProgressHUD */,
 				40D4485522240779009B77C7 /* QHPayWaysSelectVC */,
 				40D448362223FE3C009B77C7 /* QHAlertController */,
@@ -347,6 +382,7 @@
 			files = (
 				40D448172223E827009B77C7 /* QHCommonComponents.podspec in Resources */,
 				40D4487D22240871009B77C7 /* open_already.mp3 in Resources */,
+				4073706A2224E2D600F04A64 /* scan@3x.png in Resources */,
 				40D4487B22240871009B77C7 /* please_close_lock_then_delivery.mp3 in Resources */,
 				40D4487822240871009B77C7 /* disconnect.mp3 in Resources */,
 				40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */,
@@ -355,11 +391,13 @@
 				40D4487422240871009B77C7 /* open_success.mp3 in Resources */,
 				40D4487A22240871009B77C7 /* connect.mp3 in Resources */,
 				40D4487622240871009B77C7 /* assign_success.mp3 in Resources */,
+				4073706B2224E2D600F04A64 /* lighten@3x.png in Resources */,
 				40D4487F22240871009B77C7 /* msg_send.mp3 in Resources */,
 				40D4487322240871009B77C7 /* read_success.mp3 in Resources */,
 				40D4487522240871009B77C7 /* no_response.mp3 in Resources */,
 				40D4487C22240871009B77C7 /* read_already.mp3 in Resources */,
 				40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */,
+				407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */,
 				40D4487722240871009B77C7 /* user_not_auth.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,9 +458,11 @@
 			files = (
 				40D448392223FE3C009B77C7 /* QHEncrypt.m in Sources */,
 				40D4488022240871009B77C7 /* QHBLESearchManager.m in Sources */,
+				4073706C2224E2D600F04A64 /* QRViewController.m in Sources */,
 				40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */,
 				40D4483A2223FE3C009B77C7 /* QHAlertController.m in Sources */,
 				40D4485B22240779009B77C7 /* QHPayWaysCell.m in Sources */,
+				407370682224E2D600F04A64 /* QRView.m in Sources */,
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */,
 				4073705E2224E06C00F04A64 /* UIViewController+SVProgressHUD.m in Sources */,

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'QHCommonComponents'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'QHCommonComponents of QHWL project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -54,9 +54,12 @@ TODO: Add long description of the pod here.
       sss.dependency 'SVProgressHUD'
       sss.source_files = 'QHCommonComponents/QHUIViewControllers/UIViewController+SVProgressHUD/**/*'
     end
+
+    ss.subspec 'QHQRViewController' do |sss|
+      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHQRViewController/**/*'
+    end
   end
 
-  
 
   #pod spec lint  --use-libraries
 
