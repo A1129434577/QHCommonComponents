@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4018D6AB2224CA3E0048D112 /* TESTObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018D6AA2224CA3E0048D112 /* TESTObject.m */; };
 		40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FB2223E1A1009B77C7 /* Assets.xcassets */; };
 		40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */; };
 		40D448022223E1A1009B77C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448012223E1A1009B77C7 /* main.m */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QHCommonComponentsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
+		4018D6A92224CA3E0048D112 /* TESTObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TESTObject.h; sourceTree = "<group>"; };
+		4018D6AA2224CA3E0048D112 /* TESTObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TESTObject.m; sourceTree = "<group>"; };
 		40D447EF2223E1A0009B77C7 /* QHCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D447FB2223E1A1009B77C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40D447FE2223E1A1009B77C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,6 +105,15 @@
 				3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4018D6A82224CA250048D112 /* TEST */ = {
+			isa = PBXGroup;
+			children = (
+				4018D6A92224CA3E0048D112 /* TESTObject.h */,
+				4018D6AA2224CA3E0048D112 /* TESTObject.m */,
+			);
+			path = TEST;
 			sourceTree = "<group>";
 		};
 		40D447E62223E1A0009B77C7 = {
@@ -169,6 +181,7 @@
 		40D448312223FE3C009B77C7 /* QHNSObjects */ = {
 			isa = PBXGroup;
 			children = (
+				4018D6A82224CA250048D112 /* TEST */,
 				40D4485C22240871009B77C7 /* QHBluetooth */,
 				40D448322223FE3C009B77C7 /* QHEncryptHelper */,
 			);
@@ -388,6 +401,7 @@
 				40D4483A2223FE3C009B77C7 /* QHAlertController.m in Sources */,
 				40D4485B22240779009B77C7 /* QHPayWaysCell.m in Sources */,
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
+				4018D6AB2224CA3E0048D112 /* TESTObject.m in Sources */,
 				40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */,
 				40D4488122240871009B77C7 /* QHBLEManager.m in Sources */,
 				40D448022223E1A1009B77C7 /* main.m in Sources */,

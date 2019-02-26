@@ -7,6 +7,7 @@
 //
 
 #import "QHAlertController.h"
+#import "LBUIMacro.h"
 @interface QHAlertController ()
 
 @end
@@ -33,7 +34,7 @@
     [self addActionButton:actionBtn];
     
     if (self.buttonArray.count%2 == 0) {
-        actionBtn.backgroundColor = [UIColor greenColor];
+        actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
         [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }else{
         actionBtn.backgroundColor = [UIColor whiteColor];
