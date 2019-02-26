@@ -9,6 +9,7 @@
 #ifndef QHUIMacro_h
 #define QHUIMacro_h
 #import "LBUIMacro.h"
+
 #define THEM_GREEN UIColorRGBHex(0x10c6bf)
 
 #endif /* LBUIMacro_h */
