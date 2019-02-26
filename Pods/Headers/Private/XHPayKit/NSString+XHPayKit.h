@@ -1,0 +1,1 @@
+../../../XHPayKit/XHPayKit/NSString+XHPayKit.h

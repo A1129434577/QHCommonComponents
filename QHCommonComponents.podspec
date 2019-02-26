@@ -8,11 +8,10 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/A1129434577'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'A1129434577' => '1129434577@qq.com' }
-  #s.source           = { :git => "https://github.com/A1129434577/QHCommonComponents.git", :tag => s.version.to_s }
-  s.source           = { :git => "/Users/liubin/Desktop/个人仓库/MyProject/巧合物联/QHCommonComponentsExample", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/A1129434577/QHCommonComponents.git", :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
 
-
+ 
   s.subspec 'QHMacros' do |ss|
     ss.dependency 'CommonComponents/Macros'
 
@@ -28,6 +27,8 @@ TODO: Add long description of the pod here.
 
   
   s.subspec 'QHNSObjects' do |ss|
+    ss.dependency 'QHCommonComponents/QHMacros'
+
     ss.subspec 'QHEncryptHelper' do |sss|
       sss.dependency 'CommonComponents/NSObjects/LBEncrypt'
       sss.source_files = 'QHCommonComponents/QHNSObjects/QHEncryptHelper/**/*'
@@ -36,12 +37,20 @@ TODO: Add long description of the pod here.
     ss.subspec 'QHBluetooth' do |sss|
       sss.source_files = 'QHCommonComponents/QHNSObjects/QHBluetooth/**/*'
     end
+
+    ss.subspec 'QHPayKit' do |sss|
+      sss.dependency 'XHPayKit'
+      sss.source_files = 'QHCommonComponents/QHNSObjects/QHPayKit/**/*'
+    end
   end
 
+
   s.subspec 'QHUIViewControllers' do |ss|
+    ss.dependency 'QHCommonComponents/QHMacros'
+
     ss.subspec 'QHPayWaysSelectVC' do |sss|
-      sss.dependency 'CommonComponents/NSObjects/LBCustemPresentTransitions'
       sss.dependency 'SDWebImage'
+      sss.dependency 'CommonComponents/NSObjects/LBCustemPresentTransitions'
       sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHPayWaysSelectVC/**/*'
     end
     
@@ -56,12 +65,13 @@ TODO: Add long description of the pod here.
     end
 
     ss.subspec 'QHQRViewController' do |sss|
+      
+      sss.dependency 'QHCommonComponents/QHUIViewControllers/UIViewController+SVProgressHUD'
       sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHQRViewController/**/*'
     end
   end
 
 
   #pod spec lint  --use-libraries
-
 
 end

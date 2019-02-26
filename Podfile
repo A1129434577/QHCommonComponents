@@ -5,5 +5,6 @@ target "QHCommonComponentsExample" do
 pod 'CommonComponents', '~> 0.0.1'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
+pod 'XHPayKit'
 
 end

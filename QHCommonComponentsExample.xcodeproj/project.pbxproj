@@ -13,6 +13,7 @@
 		4073706A2224E2D600F04A64 /* scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370652224E2D600F04A64 /* scan@3x.png */; };
 		4073706B2224E2D600F04A64 /* lighten@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370662224E2D600F04A64 /* lighten@3x.png */; };
 		4073706C2224E2D600F04A64 /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370672224E2D600F04A64 /* QRViewController.m */; };
+		407370702225088100F04A64 /* QHPayKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4073706F2225088100F04A64 /* QHPayKit.m */; };
 		40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FB2223E1A1009B77C7 /* Assets.xcassets */; };
 		40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */; };
 		40D448022223E1A1009B77C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448012223E1A1009B77C7 /* main.m */; };
@@ -54,6 +55,8 @@
 		407370652224E2D600F04A64 /* scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan@3x.png"; sourceTree = "<group>"; };
 		407370662224E2D600F04A64 /* lighten@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighten@3x.png"; sourceTree = "<group>"; };
 		407370672224E2D600F04A64 /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
+		4073706E2225088100F04A64 /* QHPayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QHPayKit.h; sourceTree = "<group>"; };
+		4073706F2225088100F04A64 /* QHPayKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QHPayKit.m; sourceTree = "<group>"; };
 		40D447EF2223E1A0009B77C7 /* QHCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D447FB2223E1A1009B77C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40D447FE2223E1A1009B77C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,6 +153,15 @@
 			path = QRView;
 			sourceTree = "<group>";
 		};
+		4073706D2225086B00F04A64 /* QHPayKit */ = {
+			isa = PBXGroup;
+			children = (
+				4073706E2225088100F04A64 /* QHPayKit.h */,
+				4073706F2225088100F04A64 /* QHPayKit.m */,
+			);
+			path = QHPayKit;
+			sourceTree = "<group>";
+		};
 		40D447E62223E1A0009B77C7 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +227,7 @@
 		40D448312223FE3C009B77C7 /* QHNSObjects */ = {
 			isa = PBXGroup;
 			children = (
+				4073706D2225086B00F04A64 /* QHPayKit */,
 				40D4485C22240871009B77C7 /* QHBluetooth */,
 				40D448322223FE3C009B77C7 /* QHEncryptHelper */,
 			);
@@ -460,6 +473,7 @@
 				40D4488022240871009B77C7 /* QHBLESearchManager.m in Sources */,
 				4073706C2224E2D600F04A64 /* QRViewController.m in Sources */,
 				40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */,
+				407370702225088100F04A64 /* QHPayKit.m in Sources */,
 				40D4483A2223FE3C009B77C7 /* QHAlertController.m in Sources */,
 				40D4485B22240779009B77C7 /* QHPayWaysCell.m in Sources */,
 				407370682224E2D600F04A64 /* QRView.m in Sources */,

@@ -50,23 +50,27 @@ PODS:
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
   - SVProgressHUD (2.2.5)
+  - XHPayKit (1.0.3)
 
 DEPENDENCIES:
   - CommonComponents (~> 0.0.1)
   - SDWebImage
   - SVProgressHUD
+  - XHPayKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CommonComponents
     - SDWebImage
     - SVProgressHUD
+    - XHPayKit
 
 SPEC CHECKSUMS:
   CommonComponents: a6e59af508646ce764df8a924a8748fc965ea49c
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  XHPayKit: 068bb626d1591df95caf97eeb1682d875c20f7d9
 
-PODFILE CHECKSUM: bca859efbc030b4500c3a96a70ca3f46ba94e658
+PODFILE CHECKSUM: 894cb04c0536ebc81908e74b3a671d35c75e5e48
 
 COCOAPODS: 1.5.3
