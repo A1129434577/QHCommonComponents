@@ -22,6 +22,7 @@
     
     UIView *_lineView;
     UITableView *_payWaysTabView;
+    UIView *_footerView;
 }
 @end
 
@@ -45,16 +46,18 @@
         
         _headerMessageLabel = [[UILabel alloc] init];
         _headerMessageLabel.numberOfLines = 0;
+        _headerMessageLabel.font = [UIFont systemFontOfSize:25];
         _headerMessageLabel.textAlignment = NSTextAlignmentCenter;
         
         _lineView = [[UIView alloc] init];
         _lineView.backgroundColor = [UIColor lightGrayColor];
         
-        
+        _footerView = [[UIView alloc] init];
         _footerMessageLabel = [[UILabel alloc] init];
         _footerMessageLabel.numberOfLines = 0;
+        _footerMessageLabel.font = [UIFont systemFontOfSize:14];
+        _footerMessageLabel.textColor = [UIColor darkGrayColor];
         _footerMessageLabel.textAlignment = NSTextAlignmentCenter;
-        
         
         _payWaysTabView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _payWaysTabView.backgroundColor = [UIColor clearColor];
@@ -89,13 +92,15 @@
     }
     
     if (_footerMessage.length) {
-        _footerMessageLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [_footerMessageLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.view.frame), CGFLOAT_MAX)].height+25*2);
+        _footerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [_footerMessageLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.view.frame)-20*2, CGFLOAT_MAX)].height+20);
+        _footerMessageLabel.frame = CGRectMake(20, 0, CGRectGetWidth(_footerView.bounds)-20*2, CGRectGetHeight(_footerView.bounds));
+        [_footerView addSubview:_footerMessageLabel];
     }
     
     
-    _payWaysTabView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), PAY_WAYS_CELL_HEIGHT*_payWays.count+44+CGRectGetHeight(_headerMessageLabel.frame));
+    _payWaysTabView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), PAY_WAYS_CELL_HEIGHT*_payWays.count+44+CGRectGetHeight(_headerMessageLabel.frame)+CGRectGetHeight(_footerMessageLabel.frame));
     _payWaysTabView.tableHeaderView = _headerMessageLabel;
-    _payWaysTabView.tableFooterView = _footerMessageLabel;
+    _payWaysTabView.tableFooterView = _footerView;
     [self.view addSubview:_payWaysTabView];
 
     
