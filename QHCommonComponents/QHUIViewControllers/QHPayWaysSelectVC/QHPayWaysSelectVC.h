@@ -22,11 +22,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)NSString *payType;
 @end
 
-@interface QHPayWaysSelectVC : UIViewController
+@interface QHPayWaysCell : UITableViewCell
+@property (nonatomic,strong)UIImageView *iconView;
+@end
 
+@interface QHPayWaysSelectVC : UIViewController
+@property (nonatomic,strong,readonly)UILabel *headerMessageLabel;
+@property (nonatomic,strong)NSString *headerMessage;
+@property (nonatomic,strong,readonly)UILabel *footerMessageLabel;
+@property (nonatomic,strong)NSString *footerMessage;
 @property (nonatomic,copy)void (^payWaySelected)(id<PayWayObjectProtocol>);
 
-- (instancetype)initWithPayWays:(NSArray<id<PayWayObjectProtocol>> *)payWays title:(NSString *)title subTitle:(NSString *_Nullable)subTitle;
+- (instancetype)initWithPayWays:(NSArray<id<PayWayObjectProtocol>> * _Nullable)payWays;
 @end
 
 NS_ASSUME_NONNULL_END

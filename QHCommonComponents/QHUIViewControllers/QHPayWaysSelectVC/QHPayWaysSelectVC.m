@@ -8,8 +8,9 @@
 
 #import "QHPayWaysSelectVC.h"
 #import "LBCustemPresentTransitions.h"
-#import "QHPayWaysCell.h"
 #import "UIImageView+WebCache.h"
+
+#define PAY_WAYS_CELL_HEIGHT 60
 
 @implementation QHPayWayObject
 @end
@@ -18,23 +19,21 @@
 {
     UINavigationController *_bankSourceNaVC;
     NSArray<id<PayWayObjectProtocol>> *_payWays;
-    NSString *_subTitle;
-    CGFloat _cellHeight;
+    
+    UIView *_lineView;
+    UITableView *_payWaysTabView;
 }
 @end
 
 @implementation QHPayWaysSelectVC
 - (instancetype)init
 {
-    return [[QHPayWaysSelectVC alloc] initWithPayWays:@[] title:@"" subTitle:@""];
+    return [[QHPayWaysSelectVC alloc] initWithPayWays:nil];
 }
-- (instancetype)initWithPayWays:(NSArray<id<PayWayObjectProtocol>> *)payWays title:(NSString *)title subTitle:(NSString *_Nullable)subTitle
+- (instancetype)initWithPayWays:(NSArray<id<PayWayObjectProtocol>> * _Nullable)payWays
 {
     self = [super init];
     if (self) {
-        self.title = title;
-        _subTitle = subTitle;
-        
         LBCustemPresentTransitions *transitions = [LBCustemPresentTransitions shareInstanse];
         transitions.mbContentMode = MBViewContentModeCenter;
         _bankSourceNaVC = [[UINavigationController alloc] initWithRootViewController:self];
@@ -42,6 +41,27 @@
         _bankSourceNaVC.modalPresentationStyle = UIModalPresentationCustom;
         
         _payWays = payWays;
+        
+        
+        _headerMessageLabel = [[UILabel alloc] init];
+        _headerMessageLabel.numberOfLines = 0;
+        _headerMessageLabel.textAlignment = NSTextAlignmentCenter;
+        
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = [UIColor lightGrayColor];
+        
+        
+        _footerMessageLabel = [[UILabel alloc] init];
+        _footerMessageLabel.numberOfLines = 0;
+        _footerMessageLabel.textAlignment = NSTextAlignmentCenter;
+        
+        
+        _payWaysTabView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _payWaysTabView.backgroundColor = [UIColor clearColor];
+        _payWaysTabView.dataSource = self;
+        _payWaysTabView.delegate = self;
+        _payWaysTabView.backgroundColor = [UIColor whiteColor];
+        _payWaysTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
@@ -54,51 +74,32 @@
     
     UIButton *rightBarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightBarButton setImage:[UIImage imageNamed:@"close_2"] forState:UIControlStateNormal];
-    [rightBarButton addTarget:self action:@selector(receiveExpressPayCancel) forControlEvents:UIControlEventTouchUpInside];
+    [rightBarButton addTarget:self action:@selector(qhPayCancel) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
     
     self.view.frame = CGRectMake(0, 0, 250, 0);
     
-    _cellHeight = 60;
     
-    
-    UILabel *tableHeaderView;
-    if (_subTitle.length) {
-        tableHeaderView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 80)];
-        tableHeaderView.textAlignment = NSTextAlignmentCenter;
-        tableHeaderView.font = [UIFont systemFontOfSize:25];
-        if ([_subTitle containsString:@"盒子"]) {
-            tableHeaderView.font = [UIFont systemFontOfSize:18];
-        }
-        tableHeaderView.text = _subTitle;
-        tableHeaderView.numberOfLines = 0;
-        tableHeaderView.adjustsFontSizeToFitWidth = YES;
+    if (_headerMessage.length) {
+        _headerMessageLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [_headerMessageLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.view.frame), CGFLOAT_MAX)].height+25*2);
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(tableHeaderView.frame)-0.5, CGRectGetWidth(tableHeaderView.frame), 0.5)];
-        lineView.backgroundColor = [UIColor lightGrayColor];
-        [tableHeaderView addSubview:lineView];
+        _lineView.frame = CGRectMake(0, CGRectGetHeight(_headerMessageLabel.frame)-0.5, CGRectGetWidth(_headerMessageLabel.frame), 0.5);
+        [_headerMessageLabel addSubview:_lineView];
     }
     
-    if (_cellHeight*_payWays.count+CGRectGetHeight(tableHeaderView.frame)<100) {
-        _cellHeight = 100;
+    if (_footerMessage.length) {
+        _footerMessageLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [_footerMessageLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.view.frame), CGFLOAT_MAX)].height+25*2);
     }
     
     
+    _payWaysTabView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), PAY_WAYS_CELL_HEIGHT*_payWays.count+44+CGRectGetHeight(_headerMessageLabel.frame));
+    _payWaysTabView.tableHeaderView = _headerMessageLabel;
+    _payWaysTabView.tableFooterView = _footerMessageLabel;
+    [self.view addSubview:_payWaysTabView];
+
     
-    UITableView *payWaysTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), _cellHeight*_payWays.count+44+CGRectGetHeight(tableHeaderView.frame)) style:UITableViewStylePlain];
-    payWaysTabView.backgroundColor = [UIColor clearColor];
-    payWaysTabView.dataSource = self;
-    payWaysTabView.delegate = self;
-    payWaysTabView.backgroundColor = [UIColor whiteColor];
-    payWaysTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:payWaysTabView];
-    payWaysTabView.tableHeaderView = tableHeaderView;
-    
-    
-    
-    self.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetMaxY(payWaysTabView.frame));
-    
+    self.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetMaxY(_payWaysTabView.frame));
 }
 
 - (void)viewDidLoad {
@@ -106,7 +107,19 @@
     // Do any additional setup after loading the view.
 }
 
--(void)receiveExpressPayCancel{
+-(void)setHeaderMessage:(NSString *)headerMessage{
+    _headerMessage = headerMessage;
+    _headerMessageLabel.text = headerMessage;
+    [self loadView];
+}
+
+-(void)setFooterMessage:(NSString *)footerMessage{
+    _footerMessage = footerMessage;
+    _footerMessageLabel.text = footerMessage;
+    [self loadView];
+}
+
+-(void)qhPayCancel{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -116,7 +129,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return _cellHeight;
+    return PAY_WAYS_CELL_HEIGHT;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -148,5 +161,25 @@
 
 
 
+
+@end
+
+
+@implementation QHPayWaysCell
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.iconView = [[UIImageView alloc] init];//这里不用cell自带的imageView是因为重用的时候自带imageView会重绘
+        self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:self.iconView];
+    }
+    return self;
+}
+
+-(void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    self.iconView.frame = CGRectMake(60 , (CGRectGetHeight(frame)-40)/2, 40, 40);
+    self.separatorInset = UIEdgeInsetsMake(0, CGRectGetMaxX(self.iconView.frame)+20, 0, 0);
+}
 
 @end
