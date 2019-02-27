@@ -23,7 +23,6 @@
 		40D448392223FE3C009B77C7 /* QHEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448332223FE3C009B77C7 /* QHEncrypt.m */; };
 		40D4483A2223FE3C009B77C7 /* QHAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448382223FE3C009B77C7 /* QHAlertController.m */; };
 		40D4485A22240779009B77C7 /* QHPayWaysSelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4485622240779009B77C7 /* QHPayWaysSelectVC.m */; };
-		40D4485B22240779009B77C7 /* QHPayWaysCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4485922240779009B77C7 /* QHPayWaysCell.m */; };
 		40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4485E22240871009B77C7 /* AMRPlayerTool.m */; };
 		40D4487322240871009B77C7 /* read_success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40D4486022240871009B77C7 /* read_success.mp3 */; };
 		40D4487422240871009B77C7 /* open_success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40D4486122240871009B77C7 /* open_success.mp3 */; };
@@ -76,9 +75,7 @@
 		40D4484C2224004E009B77C7 /* QHUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHUIMacro.h; sourceTree = "<group>"; };
 		40D4484D22240124009B77C7 /* QHPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QHPrefixHeader.pch; sourceTree = "<group>"; };
 		40D4485622240779009B77C7 /* QHPayWaysSelectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHPayWaysSelectVC.m; sourceTree = "<group>"; };
-		40D4485722240779009B77C7 /* QHPayWaysCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHPayWaysCell.h; sourceTree = "<group>"; };
 		40D4485822240779009B77C7 /* QHPayWaysSelectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHPayWaysSelectVC.h; sourceTree = "<group>"; };
-		40D4485922240779009B77C7 /* QHPayWaysCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHPayWaysCell.m; sourceTree = "<group>"; };
 		40D4485E22240871009B77C7 /* AMRPlayerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRPlayerTool.m; sourceTree = "<group>"; };
 		40D4486022240871009B77C7 /* read_success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = read_success.mp3; sourceTree = "<group>"; };
 		40D4486122240871009B77C7 /* open_success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = open_success.mp3; sourceTree = "<group>"; };
@@ -278,8 +275,6 @@
 			children = (
 				40D4485822240779009B77C7 /* QHPayWaysSelectVC.h */,
 				40D4485622240779009B77C7 /* QHPayWaysSelectVC.m */,
-				40D4485722240779009B77C7 /* QHPayWaysCell.h */,
-				40D4485922240779009B77C7 /* QHPayWaysCell.m */,
 			);
 			path = QHPayWaysSelectVC;
 			sourceTree = "<group>";
@@ -475,7 +470,6 @@
 				40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */,
 				407370702225088100F04A64 /* QHPayKit.m in Sources */,
 				40D4483A2223FE3C009B77C7 /* QHAlertController.m in Sources */,
-				40D4485B22240779009B77C7 /* QHPayWaysCell.m in Sources */,
 				407370682224E2D600F04A64 /* QRView.m in Sources */,
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */,

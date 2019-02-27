@@ -12,16 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (SVProgressHUD)
 - (void)showWithStatus:(NSString *_Nullable)status;
+- (void)showSuccessWithStatus:(NSString *_Nullable)status;
+- (void)showSuccessWithStatus:(NSString *_Nullable)status completion:(SVProgressHUDDismissCompletion)completion;
 
-- (void)showErrorWithStatus:(NSString*)status;
+- (void)showErrorWithStatus:(NSString *_Nullable)status;
+- (void)showErrorWithStatus:(NSString *_Nullable)status completion:(SVProgressHUDDismissCompletion)completion;
 
 - (void)dismiss;
 - (void)dismissWithCompletion:(SVProgressHUDDismissCompletion)completion;
-- (void)showSuccessWithStatus:(NSString *)status completion:(SVProgressHUDDismissCompletion)completion;
-/** 显示错误错误提示 */
-- (void)dismissErrorWithTitle:(NSString *)title completion:(SVProgressHUDDismissCompletion)completion;
-/** 显示成功 */
-- (void)showSuccessWithTitle:(NSString *)title;
+
 @end
 
 NS_ASSUME_NONNULL_END
