@@ -33,6 +33,9 @@
     [actionBtn setTitle:actionTitle forState:UIControlStateNormal];
     [self addActionButton:actionBtn];
     
+    actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
+    [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
     if (self.buttonArray.count%2 == 0) {
         actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
         [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
