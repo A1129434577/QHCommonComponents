@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4073705E2224E06C00F04A64 /* UIViewController+SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4073705C2224E06C00F04A64 /* UIViewController+SVProgressHUD.m */; };
 		407370682224E2D600F04A64 /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370622224E2D600F04A64 /* QRView.m */; };
 		407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370632224E2D600F04A64 /* lighten_s@3x.png */; };
 		4073706A2224E2D600F04A64 /* scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370652224E2D600F04A64 /* scan@3x.png */; };
@@ -46,8 +45,6 @@
 /* Begin PBXFileReference section */
 		1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QHCommonComponentsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
-		4073705C2224E06C00F04A64 /* UIViewController+SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SVProgressHUD.m"; sourceTree = "<group>"; };
-		4073705D2224E06C00F04A64 /* UIViewController+SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SVProgressHUD.h"; sourceTree = "<group>"; };
 		407370602224E2D600F04A64 /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
 		407370622224E2D600F04A64 /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
 		407370632224E2D600F04A64 /* lighten_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighten_s@3x.png"; sourceTree = "<group>"; };
@@ -120,15 +117,6 @@
 				3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		4073705B2224E06C00F04A64 /* UIViewController+SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				4073705D2224E06C00F04A64 /* UIViewController+SVProgressHUD.h */,
-				4073705C2224E06C00F04A64 /* UIViewController+SVProgressHUD.m */,
-			);
-			path = "UIViewController+SVProgressHUD";
 			sourceTree = "<group>";
 		};
 		4073705F2224E2D600F04A64 /* QHQRViewController */ = {
@@ -257,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				4073705F2224E2D600F04A64 /* QHQRViewController */,
-				4073705B2224E06C00F04A64 /* UIViewController+SVProgressHUD */,
 				40D4485522240779009B77C7 /* QHPayWaysSelectVC */,
 				40D448362223FE3C009B77C7 /* QHAlertController */,
 			);
@@ -487,7 +474,6 @@
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */,
 				40EDF27F2227725B0098B11F /* NSObject+SVProgressHUD.m in Sources */,
-				4073705E2224E06C00F04A64 /* UIViewController+SVProgressHUD.m in Sources */,
 				40D4488122240871009B77C7 /* QHBLEManager.m in Sources */,
 				40D448022223E1A1009B77C7 /* main.m in Sources */,
 				40D4485A22240779009B77C7 /* QHPayWaysSelectVC.m in Sources */,

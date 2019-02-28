@@ -8,7 +8,7 @@
 
 #import "QRViewController.h"
 #import <Photos/Photos.h>
-#import "UIViewController+SVProgressHUD.h"
+#import "NSObject+SVProgressHUD.h"
 
 @interface QRViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
