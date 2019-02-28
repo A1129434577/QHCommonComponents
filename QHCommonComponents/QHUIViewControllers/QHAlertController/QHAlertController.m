@@ -33,15 +33,20 @@
     [actionBtn setTitle:actionTitle forState:UIControlStateNormal];
     [self addActionButton:actionBtn];
     
-    actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
-    [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    if (self.buttonArray.count%2 == 0) {
+    if (self.buttonArray.count > 1) {
+        LBAlertActionButton *firstActionButton = [self.buttonArray firstObject];
+        firstActionButton.backgroundColor = [UIColor whiteColor];
+        [firstActionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        if (self.buttonArray.count%2 == 0) {
+            actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
+            [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }else{
+            actionBtn.backgroundColor = [UIColor whiteColor];
+            [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }
+    }else{
         actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
         [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        actionBtn.backgroundColor = [UIColor whiteColor];
-        [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     
     return actionBtn;
