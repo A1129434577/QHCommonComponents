@@ -10,22 +10,25 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    AnimationTypePresent,
-    AnimationTypeDismiss,
-    AnimationTypePush,
-    AnimationTypePop,
-} AnimationType;
+    LBAnimationTypePresent,
+    LBAnimationTypeDismiss,
+    LBAnimationTypePush,
+    LBAnimationTypePop,
+} LBAnimationType;
 
-typedef NS_ENUM(NSInteger, MBViewContentMode) {
-    MBViewContentModeBottom = 0,
-    MBViewContentModeCenter,
+typedef NS_ENUM(NSInteger, LBViewContentMode) {
+    LBViewContentModeTop = 0,
+    LBViewContentModeLeft,
+    LBViewContentModeBottom,
+    LBViewContentModeRight,
+    LBViewContentModeCenter,
 };
 
 
 @interface LBCustemPresentTransitions : NSObject <UIViewControllerAnimatedTransitioning,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 
-@property (nonatomic, assign) AnimationType type;
-@property (nonatomic, assign) MBViewContentMode mbContentMode;
+@property (nonatomic, assign) LBAnimationType type;
+@property (nonatomic, assign) LBViewContentMode contentMode;
 
 +(LBCustemPresentTransitions *)shareInstanse;
 

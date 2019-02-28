@@ -8,6 +8,7 @@
 
 #import "QHComponentsExampleVC.h"
 #import "QHAlertController.h"
+#import "QHPayWaysSelectVC.h"
 
 @interface QHComponentsExampleVC ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _testTitleArray = @[@"QHAlertController TEST"].mutableCopy;
+    _testTitleArray = @[@"QHAlertController TEST",@"QHPayWaysSelectVC TEST"].mutableCopy;
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -54,6 +55,9 @@
         [qhAlertC addActionTitle:@"取消" action:^(UIButton *sender, NSDictionary *userInfo) {
             ;
         }];
+    }else if ([testTitle containsString:@"QHPayWaysSelectVC"]){
+        QHPayWaysSelectVC *payWaysSelectVC = [[QHPayWaysSelectVC alloc] initWithPayWays:nil];
+        [self presentViewController:payWaysSelectVC.navigationController animated:YES completion:NULL];
     }
 }
 @end

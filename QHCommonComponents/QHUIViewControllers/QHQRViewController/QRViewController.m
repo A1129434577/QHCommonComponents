@@ -35,7 +35,7 @@
     [self.view addSubview:_qrView];
     
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 30, 35)];
-    [backBtn setImage:[UIImage imageNamed:@"left_arrow"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"qr_left_arrow"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
     

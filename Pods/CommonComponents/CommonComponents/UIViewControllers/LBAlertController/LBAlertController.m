@@ -38,7 +38,7 @@
     self = [super init];
     if (self) {
         LBCustemPresentTransitions *transitions = [LBCustemPresentTransitions shareInstanse];
-        transitions.mbContentMode = MBViewContentModeCenter;
+        transitions.contentMode = LBViewContentModeCenter;
         self.transitioningDelegate = transitions;
         self.modalPresentationStyle = UIModalPresentationCustom;
         

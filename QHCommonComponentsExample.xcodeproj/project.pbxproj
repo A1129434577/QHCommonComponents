@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402CAE682227C7090050BD49 /* qh_pay_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 402CAE672227C7090050BD49 /* qh_pay_close@3x.png */; };
+		402CAE6B2227C7CA0050BD49 /* qr_left_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 402CAE6A2227C7C90050BD49 /* qr_left_arrow@3x.png */; };
 		407370682224E2D600F04A64 /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370622224E2D600F04A64 /* QRView.m */; };
 		407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370632224E2D600F04A64 /* lighten_s@3x.png */; };
 		4073706A2224E2D600F04A64 /* scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370652224E2D600F04A64 /* scan@3x.png */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QHCommonComponentsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
+		402CAE672227C7090050BD49 /* qh_pay_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qh_pay_close@3x.png"; sourceTree = "<group>"; };
+		402CAE6A2227C7C90050BD49 /* qr_left_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_left_arrow@3x.png"; sourceTree = "<group>"; };
 		407370602224E2D600F04A64 /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
 		407370622224E2D600F04A64 /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
 		407370632224E2D600F04A64 /* lighten_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighten_s@3x.png"; sourceTree = "<group>"; };
@@ -119,9 +123,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		402CAE692227C7C90050BD49 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				402CAE6A2227C7C90050BD49 /* qr_left_arrow@3x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		4073705F2224E2D600F04A64 /* QHQRViewController */ = {
 			isa = PBXGroup;
 			children = (
+				402CAE692227C7C90050BD49 /* Resource */,
 				407370602224E2D600F04A64 /* QRViewController.h */,
 				407370672224E2D600F04A64 /* QRViewController.m */,
 				407370612224E2D600F04A64 /* QRView */,
@@ -273,6 +286,7 @@
 		40D4485522240779009B77C7 /* QHPayWaysSelectVC */ = {
 			isa = PBXGroup;
 			children = (
+				402CAE672227C7090050BD49 /* qh_pay_close@3x.png */,
 				40D4485822240779009B77C7 /* QHPayWaysSelectVC.h */,
 				40D4485622240779009B77C7 /* QHPayWaysSelectVC.m */,
 			);
@@ -392,6 +406,7 @@
 				40D4487D22240871009B77C7 /* open_already.mp3 in Resources */,
 				4073706A2224E2D600F04A64 /* scan@3x.png in Resources */,
 				40D4487B22240871009B77C7 /* please_close_lock_then_delivery.mp3 in Resources */,
+				402CAE682227C7090050BD49 /* qh_pay_close@3x.png in Resources */,
 				40D4487822240871009B77C7 /* disconnect.mp3 in Resources */,
 				40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */,
 				40D4487E22240871009B77C7 /* open_fail.mp3 in Resources */,
@@ -407,6 +422,7 @@
 				40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */,
 				407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */,
 				40D4487722240871009B77C7 /* user_not_auth.mp3 in Resources */,
+				402CAE6B2227C7CA0050BD49 /* qr_left_arrow@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

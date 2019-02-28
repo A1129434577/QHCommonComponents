@@ -36,7 +36,7 @@
     self = [super init];
     if (self) {
         LBCustemPresentTransitions *transitions = [LBCustemPresentTransitions shareInstanse];
-        transitions.mbContentMode = MBViewContentModeCenter;
+        transitions.contentMode = LBViewContentModeCenter;
         _bankSourceNaVC = [[UINavigationController alloc] initWithRootViewController:self];
         _bankSourceNaVC.transitioningDelegate = transitions;
         _bankSourceNaVC.modalPresentationStyle = UIModalPresentationCustom;
@@ -76,7 +76,7 @@
     self.navigationController.view.clipsToBounds = YES;
     
     UIButton *rightBarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [rightBarButton setImage:[UIImage imageNamed:@"close_2"] forState:UIControlStateNormal];
+    [rightBarButton setImage:[UIImage imageNamed:@"qh_pay_close"] forState:UIControlStateNormal];
     [rightBarButton addTarget:self action:@selector(qhPayCancel) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
