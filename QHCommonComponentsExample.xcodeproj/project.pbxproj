@@ -39,6 +39,7 @@
 		40D4487F22240871009B77C7 /* msg_send.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40D4486C22240871009B77C7 /* msg_send.mp3 */; };
 		40D4488022240871009B77C7 /* QHBLESearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4486E22240871009B77C7 /* QHBLESearchManager.m */; };
 		40D4488122240871009B77C7 /* QHBLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4487122240871009B77C7 /* QHBLEManager.m */; };
+		40EDF27F2227725B0098B11F /* NSObject+SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EDF27E2227725B0098B11F /* NSObject+SVProgressHUD.m */; };
 		FA2A5150664FBA647E340D5A /* libPods-QHCommonComponentsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D748D44035F0FD5819C4B72 /* libPods-QHCommonComponentsExample.a */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,8 @@
 		40D4486F22240871009B77C7 /* QHBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHBLEManager.h; sourceTree = "<group>"; };
 		40D4487022240871009B77C7 /* QHBLESearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHBLESearchManager.h; sourceTree = "<group>"; };
 		40D4487122240871009B77C7 /* QHBLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHBLEManager.m; sourceTree = "<group>"; };
+		40EDF27D2227725B0098B11F /* NSObject+SVProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SVProgressHUD.h"; sourceTree = "<group>"; };
+		40EDF27E2227725B0098B11F /* NSObject+SVProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SVProgressHUD.m"; sourceTree = "<group>"; };
 		D6061A0B3F720C52291EAF92 /* Pods-QHCommonComponentsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +160,15 @@
 				4073706F2225088100F04A64 /* QHPayKit.m */,
 			);
 			path = QHPayKit;
+			sourceTree = "<group>";
+		};
+		4078B8EF2227713300309BA0 /* NSObject+SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				40EDF27D2227725B0098B11F /* NSObject+SVProgressHUD.h */,
+				40EDF27E2227725B0098B11F /* NSObject+SVProgressHUD.m */,
+			);
+			path = "NSObject+SVProgressHUD";
 			sourceTree = "<group>";
 		};
 		40D447E62223E1A0009B77C7 = {
@@ -224,6 +236,7 @@
 		40D448312223FE3C009B77C7 /* QHNSObjects */ = {
 			isa = PBXGroup;
 			children = (
+				4078B8EF2227713300309BA0 /* NSObject+SVProgressHUD */,
 				4073706D2225086B00F04A64 /* QHPayKit */,
 				40D4485C22240871009B77C7 /* QHBluetooth */,
 				40D448322223FE3C009B77C7 /* QHEncryptHelper */,
@@ -473,6 +486,7 @@
 				407370682224E2D600F04A64 /* QRView.m in Sources */,
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */,
+				40EDF27F2227725B0098B11F /* NSObject+SVProgressHUD.m in Sources */,
 				4073705E2224E06C00F04A64 /* UIViewController+SVProgressHUD.m in Sources */,
 				40D4488122240871009B77C7 /* QHBLEManager.m in Sources */,
 				40D448022223E1A1009B77C7 /* main.m in Sources */,

@@ -42,6 +42,11 @@ TODO: Add long description of the pod here.
       sss.dependency 'XHPayKit'
       sss.source_files = 'QHCommonComponents/QHNSObjects/QHPayKit/**/*'
     end
+
+    ss.subspec 'NSObject+SVProgressHUD' do |sss|
+      sss.dependency 'SVProgressHUD'
+      sss.source_files = 'QHCommonComponents/QHNSObjects/NSObject+SVProgressHUD/**/*'
+    end
   end
 
 
@@ -57,11 +62,6 @@ TODO: Add long description of the pod here.
     ss.subspec 'QHAlertController' do |sss|
       sss.dependency 'CommonComponents/UIViewControllers/LBAlertController'
       sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHAlertController/**/*'
-    end
-
-    ss.subspec 'UIViewController+SVProgressHUD' do |sss|
-      sss.dependency 'SVProgressHUD'
-      sss.source_files = 'QHCommonComponents/QHUIViewControllers/UIViewController+SVProgressHUD/**/*'
     end
 
     ss.subspec 'QHQRViewController' do |sss|

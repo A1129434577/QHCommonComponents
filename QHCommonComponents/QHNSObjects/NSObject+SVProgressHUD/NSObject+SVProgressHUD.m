@@ -1,16 +1,18 @@
 //
-//  UIViewController+SVProgressHUD.m
-//  moonbox
+//  NSObject+SVProgressHUD.m
+//  QHCommonComponentsExample
 //
-//  Created by 刘彬 on 2018/11/20.
-//  Copyright © 2018 张琛. All rights reserved.
+//  Created by 刘彬 on 2019/2/28.
+//  Copyright © 2019 BIN. All rights reserved.
 //
 
-#import "UIViewController+SVProgressHUD.h"
-@implementation UIViewController (SVProgressHUD)
+#import "NSObject+SVProgressHUD.h"
+
+@implementation NSObject (SVProgressHUD)
 - (void)showWithStatus:(NSString*)status {
     [SVProgressHUD dismiss];
     [SVProgressHUD showWithStatus:status];
+    
 }
 - (void)showSuccessWithStatus:(NSString *_Nullable)status{
     [SVProgressHUD dismiss];
@@ -37,5 +39,4 @@
 - (void)dismissWithCompletion:(SVProgressHUDDismissCompletion)completion{
     [SVProgressHUD dismissWithCompletion:completion];
 }
-
 @end
