@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'QHCommonComponents'
-  s.version          = '0.0.5'
+  s.version          = '0.0.1'
   s.summary          = 'QHCommonComponents of QHWL project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -49,6 +49,13 @@ TODO: Add long description of the pod here.
     end
   end
 
+  s.subspec 'QHUIViews' do |ss|
+    ss.dependency 'QHCommonComponents/QHMacros'
+
+    ss.subspec 'QHBLEStatusView' do |sss|
+      sss.source_files = 'QHCommonComponents/QHUIViews/QHBLEStatusView/**/*'
+    end
+  end
 
   s.subspec 'QHUIViewControllers' do |ss|
     ss.dependency 'QHCommonComponents/QHMacros'
