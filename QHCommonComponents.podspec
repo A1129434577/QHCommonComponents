@@ -53,6 +53,7 @@ TODO: Add long description of the pod here.
     ss.dependency 'QHCommonComponents/QHMacros'
 
     ss.subspec 'QHBLEStatusView' do |sss|
+      sss.dependency 'CommonComponents/UIViews/UIViewInit'
       sss.source_files = 'QHCommonComponents/QHUIViews/QHBLEStatusView/**/*'
     end
   end

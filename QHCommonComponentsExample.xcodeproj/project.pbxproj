@@ -196,13 +196,13 @@
 		409C927D22290658005E8A1E /* QHBLEStatusView */ = {
 			isa = PBXGroup;
 			children = (
-				409C927E22290658005E8A1E /* battery@2x.png */,
 				409C927F22290658005E8A1E /* QHBLEStatusView.h */,
+				409C928422290658005E8A1E /* QHBLEStatusView.m */,
+				409C927E22290658005E8A1E /* battery@2x.png */,
 				409C928022290658005E8A1E /* ble_locker_connection@3x.png */,
 				409C928122290658005E8A1E /* ble_locker_connected@3x.png */,
 				409C928222290658005E8A1E /* ble_refresh@3x.png */,
 				409C928322290658005E8A1E /* ble_locker_disconnect@3x.png */,
-				409C928422290658005E8A1E /* QHBLEStatusView.m */,
 			);
 			path = QHBLEStatusView;
 			sourceTree = "<group>";

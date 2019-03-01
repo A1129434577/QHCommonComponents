@@ -7,6 +7,7 @@
 //
 
 #import "QHBLEStatusView.h"
+#import "UIButton+init.h"
 
 #define QHBLE_DISCONNECT_IMAGE [UIImage imageNamed:@"ble_locker_disconnect"]
 #define QHBLE_CONNECTING_IMAGE [UIImage imageNamed:@"ble_locker_connection"]
@@ -76,7 +77,7 @@
 
 -(void)setBattery:(NSInteger)battery{
     _battery = battery;
-    [_batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",battery] forState:UIControlStateNormal];
+    [_batteryView setTitle:[NSString stringWithFormat:@"电量：%d%%",battery] forState:UIControlStateNormal];
 }
 -(void)setState:(QHBLEStatus)state{
     _state = state;
@@ -122,7 +123,7 @@
                 weakSelf.statusImageView.image = QHBLE_CONNECTED_IMAGE;
                 weakSelf.statusLabel.textColor = THEM_GREEN;
                 weakSelf.statusLabel.text = @"开锁器已连接";
-                [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",weakSelf.battery] forState:UIControlStateNormal];
+                [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%d%%",weakSelf.battery] forState:UIControlStateNormal];
                 
                 
                 contentBgViewHeight += STATUS_LABEL_HEIGHT*2;
