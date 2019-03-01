@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'QHCommonComponents'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'QHCommonComponents of QHWL project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -35,7 +35,8 @@ TODO: Add long description of the pod here.
     end
     
     ss.subspec 'QHBluetooth' do |sss|
-      sss.source_files = 'QHCommonComponents/QHNSObjects/QHBluetooth/**/*'
+      sss.source_files = 'QHCommonComponents/QHNSObjects/QHBluetooth/**/*.{h,m}'
+      sss.resource = 'QHCommonComponents/QHNSObjects/QHBluetooth/**/*.mp3'
     end
 
     ss.subspec 'QHPayKit' do |sss|
@@ -54,7 +55,8 @@ TODO: Add long description of the pod here.
 
     ss.subspec 'QHBLEStatusView' do |sss|
       sss.dependency 'CommonComponents/UIViews/UIViewInit'
-      sss.source_files = 'QHCommonComponents/QHUIViews/QHBLEStatusView/**/*'
+      sss.source_files = 'QHCommonComponents/QHUIViews/QHBLEStatusView/**/*.{h,m}'
+      sss.resource = 'QHCommonComponents/QHUIViews/QHBLEStatusView/**/*.png'
     end
   end
 
@@ -64,7 +66,8 @@ TODO: Add long description of the pod here.
     ss.subspec 'QHPayWaysSelectVC' do |sss|
       sss.dependency 'SDWebImage'
       sss.dependency 'CommonComponents/NSObjects/LBCustemPresentTransitions'
-      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHPayWaysSelectVC/**/*'
+      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHPayWaysSelectVC/**/*.{h,m}'
+      sss.resource = 'QHCommonComponents/QHUIViewControllers/QHPayWaysSelectVC/**/*.png'
     end
     
     ss.subspec 'QHAlertController' do |sss|
@@ -75,7 +78,8 @@ TODO: Add long description of the pod here.
     ss.subspec 'QHQRViewController' do |sss|
       
       sss.dependency 'QHCommonComponents/QHNSObjects/NSObject+SVProgressHUD'
-      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHQRViewController/**/*'
+      sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHQRViewController/**/*.{h,m}'
+      sss.resource = 'QHCommonComponents/QHUIViewControllers/QHQRViewController/**/*.png'
     end
   end
 
