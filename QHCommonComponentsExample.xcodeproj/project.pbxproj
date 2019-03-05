@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		402CAE682227C7090050BD49 /* qh_pay_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 402CAE672227C7090050BD49 /* qh_pay_close@3x.png */; };
 		402CAE6B2227C7CA0050BD49 /* qr_left_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 402CAE6A2227C7C90050BD49 /* qr_left_arrow@3x.png */; };
+		406DAEEE222E103D000A7BE9 /* ble_locker_disconnect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406DAEEB222E103D000A7BE9 /* ble_locker_disconnect@3x.png */; };
+		406DAEEF222E103D000A7BE9 /* ble_locker_connection@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406DAEEC222E103D000A7BE9 /* ble_locker_connection@3x.png */; };
+		406DAEF0222E103D000A7BE9 /* ble_locker_connected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406DAEED222E103D000A7BE9 /* ble_locker_connected@3x.png */; };
 		407370682224E2D600F04A64 /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370622224E2D600F04A64 /* QRView.m */; };
 		407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370632224E2D600F04A64 /* lighten_s@3x.png */; };
 		4073706A2224E2D600F04A64 /* scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370652224E2D600F04A64 /* scan@3x.png */; };
@@ -16,10 +19,7 @@
 		4073706C2224E2D600F04A64 /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370672224E2D600F04A64 /* QRViewController.m */; };
 		407370702225088100F04A64 /* QHPayKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4073706F2225088100F04A64 /* QHPayKit.m */; };
 		409C928522290658005E8A1E /* battery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C927E22290658005E8A1E /* battery@2x.png */; };
-		409C928622290658005E8A1E /* ble_locker_connection@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C928022290658005E8A1E /* ble_locker_connection@3x.png */; };
-		409C928722290658005E8A1E /* ble_locker_connected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C928122290658005E8A1E /* ble_locker_connected@3x.png */; };
 		409C928822290658005E8A1E /* ble_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C928222290658005E8A1E /* ble_refresh@3x.png */; };
-		409C928922290658005E8A1E /* ble_locker_disconnect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C928322290658005E8A1E /* ble_locker_disconnect@3x.png */; };
 		409C928A22290658005E8A1E /* QHBLEStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C928422290658005E8A1E /* QHBLEStatusView.m */; };
 		40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FB2223E1A1009B77C7 /* Assets.xcassets */; };
 		40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */; };
@@ -55,6 +55,9 @@
 		3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QHCommonComponentsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
 		402CAE672227C7090050BD49 /* qh_pay_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qh_pay_close@3x.png"; sourceTree = "<group>"; };
 		402CAE6A2227C7C90050BD49 /* qr_left_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_left_arrow@3x.png"; sourceTree = "<group>"; };
+		406DAEEB222E103D000A7BE9 /* ble_locker_disconnect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_locker_disconnect@3x.png"; sourceTree = "<group>"; };
+		406DAEEC222E103D000A7BE9 /* ble_locker_connection@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_locker_connection@3x.png"; sourceTree = "<group>"; };
+		406DAEED222E103D000A7BE9 /* ble_locker_connected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_locker_connected@3x.png"; sourceTree = "<group>"; };
 		407370602224E2D600F04A64 /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
 		407370622224E2D600F04A64 /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
 		407370632224E2D600F04A64 /* lighten_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighten_s@3x.png"; sourceTree = "<group>"; };
@@ -66,10 +69,7 @@
 		4073706F2225088100F04A64 /* QHPayKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QHPayKit.m; sourceTree = "<group>"; };
 		409C927E22290658005E8A1E /* battery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battery@2x.png"; sourceTree = "<group>"; };
 		409C927F22290658005E8A1E /* QHBLEStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHBLEStatusView.h; sourceTree = "<group>"; };
-		409C928022290658005E8A1E /* ble_locker_connection@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_locker_connection@3x.png"; sourceTree = "<group>"; };
-		409C928122290658005E8A1E /* ble_locker_connected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_locker_connected@3x.png"; sourceTree = "<group>"; };
 		409C928222290658005E8A1E /* ble_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_refresh@3x.png"; sourceTree = "<group>"; };
-		409C928322290658005E8A1E /* ble_locker_disconnect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_locker_disconnect@3x.png"; sourceTree = "<group>"; };
 		409C928422290658005E8A1E /* QHBLEStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHBLEStatusView.m; sourceTree = "<group>"; };
 		40D447EF2223E1A0009B77C7 /* QHCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D447FB2223E1A1009B77C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,13 +196,13 @@
 		409C927D22290658005E8A1E /* QHBLEStatusView */ = {
 			isa = PBXGroup;
 			children = (
+				406DAEED222E103D000A7BE9 /* ble_locker_connected@3x.png */,
+				406DAEEC222E103D000A7BE9 /* ble_locker_connection@3x.png */,
+				406DAEEB222E103D000A7BE9 /* ble_locker_disconnect@3x.png */,
 				409C927F22290658005E8A1E /* QHBLEStatusView.h */,
 				409C928422290658005E8A1E /* QHBLEStatusView.m */,
 				409C927E22290658005E8A1E /* battery@2x.png */,
-				409C928022290658005E8A1E /* ble_locker_connection@3x.png */,
-				409C928122290658005E8A1E /* ble_locker_connected@3x.png */,
 				409C928222290658005E8A1E /* ble_refresh@3x.png */,
-				409C928322290658005E8A1E /* ble_locker_disconnect@3x.png */,
 			);
 			path = QHBLEStatusView;
 			sourceTree = "<group>";
@@ -443,23 +443,23 @@
 				409C928522290658005E8A1E /* battery@2x.png in Resources */,
 				4073706A2224E2D600F04A64 /* scan@3x.png in Resources */,
 				40D4487B22240871009B77C7 /* please_close_lock_then_delivery.mp3 in Resources */,
+				406DAEEE222E103D000A7BE9 /* ble_locker_disconnect@3x.png in Resources */,
 				402CAE682227C7090050BD49 /* qh_pay_close@3x.png in Resources */,
 				40D4487822240871009B77C7 /* disconnect.mp3 in Resources */,
 				40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */,
 				40D4487E22240871009B77C7 /* open_fail.mp3 in Resources */,
+				406DAEEF222E103D000A7BE9 /* ble_locker_connection@3x.png in Resources */,
 				40D4487922240871009B77C7 /* assign_fail.mp3 in Resources */,
 				40D4487422240871009B77C7 /* open_success.mp3 in Resources */,
-				409C928922290658005E8A1E /* ble_locker_disconnect@3x.png in Resources */,
 				40D4487A22240871009B77C7 /* connect.mp3 in Resources */,
 				40D4487622240871009B77C7 /* assign_success.mp3 in Resources */,
-				409C928722290658005E8A1E /* ble_locker_connected@3x.png in Resources */,
 				4073706B2224E2D600F04A64 /* lighten@3x.png in Resources */,
 				40D4487F22240871009B77C7 /* msg_send.mp3 in Resources */,
-				409C928622290658005E8A1E /* ble_locker_connection@3x.png in Resources */,
 				409C928822290658005E8A1E /* ble_refresh@3x.png in Resources */,
 				40D4487322240871009B77C7 /* read_success.mp3 in Resources */,
 				40D4487522240871009B77C7 /* no_response.mp3 in Resources */,
 				40D4487C22240871009B77C7 /* read_already.mp3 in Resources */,
+				406DAEF0222E103D000A7BE9 /* ble_locker_connected@3x.png in Resources */,
 				40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */,
 				407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */,
 				40D4487722240871009B77C7 /* user_not_auth.mp3 in Resources */,
