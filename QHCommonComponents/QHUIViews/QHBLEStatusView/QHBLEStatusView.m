@@ -52,7 +52,7 @@
         _reconnectButton = [[UIButton alloc] initWithFrame:CGRectZero action:^(UIButton * _Nonnull __weak sender) {
             weakSelf.reConnect?weakSelf.reConnect():NULL;
         }];
-        [_reconnectButton setTitleColor:THEM_GREEN forState:UIControlStateNormal];
+        [_reconnectButton setTitleColor:THEME_GREEN forState:UIControlStateNormal];
         _reconnectButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_reconnectButton setImage:QHBLE_RCONNECT_IMAGE forState:UIControlStateNormal];
         [_reconnectButton setTitle:@"重新连接开锁器" forState:UIControlStateNormal];
@@ -107,7 +107,7 @@
             case QHBLEConnecting:
             {
                 weakSelf.statusImageView.image = QHBLE_CONNECTING_IMAGE;
-                weakSelf.statusLabel.textColor = THEM_GREEN;
+                weakSelf.statusLabel.textColor = THEME_GREEN;
                 weakSelf.statusLabel.text = @"开锁器连接中...";
                 
                 weakSelf.contentBgView.frame = CGRectMake(0, (CGRectGetHeight(self.bounds)-contentBgViewHeight)/2, CGRectGetWidth(self.bounds), contentBgViewHeight);
@@ -121,7 +121,7 @@
             case QHBLEConnected:
             {
                 weakSelf.statusImageView.image = QHBLE_CONNECTED_IMAGE;
-                weakSelf.statusLabel.textColor = THEM_GREEN;
+                weakSelf.statusLabel.textColor = THEME_GREEN;
                 weakSelf.statusLabel.text = @"开锁器已连接";
                 [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%d%%",weakSelf.battery] forState:UIControlStateNormal];
                 

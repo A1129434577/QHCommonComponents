@@ -57,7 +57,7 @@
         
         CAGradientLayer *layer = [CAGradientLayer new];
         layer.frame = CGRectMake(CGRectGetMinX(boxView.frame), CGRectGetMinY(boxView.frame), CGRectGetWidth(boxView.frame), 3);
-        layer.colors = @[(__bridge id)[UIColor clearColor].CGColor,(__bridge id)THEM_GREEN.CGColor,(__bridge id)THEM_GREEN.CGColor,(__bridge id)[UIColor clearColor].CGColor];
+        layer.colors = @[(__bridge id)[UIColor clearColor].CGColor,(__bridge id)THEME_GREEN.CGColor,(__bridge id)THEME_GREEN.CGColor,(__bridge id)[UIColor clearColor].CGColor];
         layer.startPoint = CGPointMake(0, 1);
         layer.endPoint = CGPointMake(1, 1);
         [self.layer addSublayer:layer];
@@ -148,7 +148,7 @@
         [path2 addLineToPoint:point2];
         
         CAShapeLayer *shapeLayer2 = [CAShapeLayer layer];
-        shapeLayer2.strokeColor = THEM_GREEN.CGColor;
+        shapeLayer2.strokeColor = THEME_GREEN.CGColor;
         shapeLayer2.fillColor = [UIColor clearColor].CGColor;
         shapeLayer2.lineWidth = 4;
         shapeLayer2.path = path2.CGPath;
