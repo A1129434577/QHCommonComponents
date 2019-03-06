@@ -84,6 +84,9 @@
     WEAKSELF
     dispatch_async(dispatch_get_main_queue(), ^{
         CGFloat statusImageViewHeight = CGRectGetHeight(self.bounds)-(STATUS_LABEL_HEIGHT*3+15);
+        if (statusImageViewHeight>160) {
+            statusImageViewHeight = 160;
+        }
         CGFloat contentBgViewHeight = statusImageViewHeight+STATUS_LABEL_HEIGHT+15;
         
         
