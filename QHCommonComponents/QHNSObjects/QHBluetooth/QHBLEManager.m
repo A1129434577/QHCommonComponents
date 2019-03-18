@@ -31,11 +31,11 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 @interface QHBLEManager()<CBCentralManagerDelegate,CBPeripheralDelegate>
 {
     int _currentScanIndex;
-    dispatch_source_t _connectTimeoutTimer;
     dispatch_source_t _heartTimer;
     dispatch_source_t _batteryTimer;
     
 }
+@property (nonatomic, strong)dispatch_source_t connectTimeoutTimer;
 @property (nonatomic, strong)NSString *peripheralName;//蓝牙锁设备名
 @property (nonatomic, strong)NSArray *serviceUUIDArray;//蓝牙设备服务ids
 
@@ -115,14 +115,15 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             _connectTimeoutTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
             dispatch_source_set_timer(_connectTimeoutTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
+            __weak typeof(self) weakSelf = self;
             dispatch_source_set_event_handler(_connectTimeoutTimer, ^{
                 count ++;
                 if (count == 6) {
-                    dispatch_cancel(self->_connectTimeoutTimer);
+                    dispatch_cancel(weakSelf.connectTimeoutTimer);
                     
                     if (!self.cbPeripheral) {
                         [self.centralManager stopScan];//停止扫描
-                        self->_connectPeripheralFailed?self->_connectPeripheralFailed(@"未搜索到设备，请确保设备是否开启"):NULL;
+                        weakSelf.connectPeripheralFailed?weakSelf.connectPeripheralFailed(@"未搜索到设备，请确保设备是否开启"):NULL;
                     }
                 }
             });
@@ -278,9 +279,10 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             _heartTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
             dispatch_source_set_timer(_heartTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
+            __weak typeof(self) weakSelf = self;
             dispatch_source_set_event_handler(_heartTimer, ^{
                 Byte byte[] = {0xAA};
-                [self.cbPeripheral writeValue:[NSData dataWithBytes:byte length:sizeof(byte)] forCharacteristic:self->_heardCharacteristic type:CBCharacteristicWriteWithResponse];
+                [self.cbPeripheral writeValue:[NSData dataWithBytes:byte length:sizeof(byte)] forCharacteristic:weakSelf.heardCharacteristic type:CBCharacteristicWriteWithResponse];
 
             });
             dispatch_resume(_heartTimer);

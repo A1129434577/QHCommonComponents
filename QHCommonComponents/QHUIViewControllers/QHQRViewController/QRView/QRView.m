@@ -11,10 +11,8 @@
 #define BOX_WIDTH 250
 
 @interface QRView ()
-{
-    AVCaptureDevice *_device;
-    UIButton *_lightenBtn;
-}
+@property (nonatomic,strong)AVCaptureDevice *device;
+@property (nonatomic,strong)UIButton *lightenBtn;
 @end
 
 
@@ -220,16 +218,18 @@
         activityView.center = CGPointMake(CGRectGetMinX(BOX_FRAME)+CGRectGetWidth(BOX_FRAME)/2, CGRectGetMinY(BOX_FRAME)+CGRectGetHeight(BOX_FRAME)/2);
         [activityView startAnimating];
         [self addSubview:activityView];
+        
+        __weak typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         
             
             // 1. 实例化拍摄设备
-            self->_device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+            weakSelf.device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
             
             // 2. 设置输入设备
             NSError *error = nil;
-            AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:self->_device error:&error];
+            AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:weakSelf.device error:&error];
             if (error) {
                 *outError = error;
             }
@@ -242,18 +242,18 @@
             
             // 3.4创建灯光设备输出流
             AVCaptureVideoDataOutput *lamplightOutput = [[AVCaptureVideoDataOutput alloc] init];
-            [lamplightOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
+            [lamplightOutput setSampleBufferDelegate:weakSelf queue:dispatch_get_main_queue()];
             
             // 4. 添加拍摄会话
             // 4.1 实例化拍摄会话
-            self->_session = [[AVCaptureSession alloc] init];
+            weakSelf.session = [[AVCaptureSession alloc] init];
             
             // 4.2 添加会话输入
-            [self->_session addInput:input];
+            [weakSelf.session addInput:input];
             
             // 4.3 添加会话输出
-            [self->_session addOutput:output];
-            [self->_session addOutput:lamplightOutput];
+            [weakSelf.session addOutput:output];
+            [weakSelf.session addOutput:lamplightOutput];
             
             // 4.3 设置输出数据类型，需要将元数据输出添加到会话后，才能指定元数据类型，否则会报错
             //设置扫码支持的编码格式(如下设置条形码和二维码兼容)
@@ -272,12 +272,12 @@
             
             // 5. 视频预览图层
             // 5.1 实例化预览图层, 传递_session是为了告诉图层将来显示什么内容
-            AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:self->_session];
+            AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:weakSelf.session];
             preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
             preview.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
             
             // 6. 启动会话
-            [self->_session startRunning];
+            [weakSelf.session startRunning];
             
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -285,7 +285,7 @@
                 [activityView stopAnimating];
                 
                 //将图层插入当前视图
-                [self.layer insertSublayer:preview atIndex:0];
+                [weakSelf.layer insertSublayer:preview atIndex:0];
                 
             });
         });
@@ -307,9 +307,10 @@
     // brightnessValue 值代表光线强度，值越小代表光线越暗
     if (_device.hasTorch && (_device.torchMode == AVCaptureTorchModeOff)) {
         if ((_lightenBtn.alpha == 0) || (_lightenBtn.alpha == 1)) {
-            self->_lightenBtn.hidden = !(brightnessValue <= -3);
+            self.lightenBtn.hidden = !(brightnessValue <= -3);
+            __weak typeof(self) weakSelf = self;
             [UIView animateWithDuration:0.5 animations:^{
-                self->_lightenBtn.alpha = !self->_lightenBtn.hidden;
+                weakSelf.lightenBtn.alpha = !weakSelf.lightenBtn.hidden;
             }];
         }
         
@@ -325,7 +326,7 @@
 }
 
 -(void)torchMode{
-    if (self->_device.hasTorch) {
+    if (self.device.hasTorch) {
     NSError *error = nil;
     [_device lockForConfiguration:&error];
     if (error == nil) {

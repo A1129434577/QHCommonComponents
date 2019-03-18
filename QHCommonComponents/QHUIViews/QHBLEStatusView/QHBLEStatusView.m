@@ -77,7 +77,7 @@
 
 -(void)setBattery:(NSInteger)battery{
     _battery = battery;
-    [_batteryView setTitle:[NSString stringWithFormat:@"电量：%d%%",battery] forState:UIControlStateNormal];
+    [_batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",(long)battery] forState:UIControlStateNormal];
 }
 -(void)setState:(QHBLEStatus)state{
     _state = state;
@@ -126,7 +126,7 @@
                 weakSelf.statusImageView.image = QHBLE_CONNECTED_IMAGE;
                 weakSelf.statusLabel.textColor = THEME_GREEN;
                 weakSelf.statusLabel.text = @"开锁器已连接";
-                [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%d%%",weakSelf.battery] forState:UIControlStateNormal];
+                [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",(long)weakSelf.battery] forState:UIControlStateNormal];
                 
                 
                 contentBgViewHeight += STATUS_LABEL_HEIGHT*2;

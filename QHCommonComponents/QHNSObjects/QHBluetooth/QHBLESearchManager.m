@@ -8,9 +8,7 @@
 
 #import "QHBLESearchManager.h"
 @interface QHBLESearchManager()<CBCentralManagerDelegate,CBPeripheralDelegate>
-{
-    dispatch_source_t _connectTimeoutTimer;
-}
+@property (nonatomic,strong)dispatch_source_t connectTimeoutTimer;
 @property (nonatomic, copy ,nullable)void (^searchPeripheralFaild)(NSString * _Nullable errorMsg);//开锁设备搜索失败block
 
 
@@ -71,14 +69,15 @@
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             _connectTimeoutTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
             dispatch_source_set_timer(_connectTimeoutTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
+            __weak typeof(self) weakSelf = self;
             dispatch_source_set_event_handler(_connectTimeoutTimer, ^{
                 count ++;
                 if (count == 8) {
-                    dispatch_cancel(self->_connectTimeoutTimer);
+                    dispatch_cancel(weakSelf.connectTimeoutTimer);
                     
                     if (!self.peripherals.count) {
                         [self.centralManager stopScan];//停止扫描
-                        self->_searchPeripheralFaild?self->_searchPeripheralFaild(@"未搜索到设备，请确保设备是否开启"):NULL;
+                        weakSelf.searchPeripheralFaild?weakSelf.searchPeripheralFaild(@"未搜索到设备，请确保设备是否开启"):NULL;
                     }
                 }
             });
