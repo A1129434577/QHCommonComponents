@@ -50,7 +50,7 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 @property (nonatomic, copy)void (^connectPeripheralFailed)(NSString *errorMsg);//开锁设备链接失败block
 
 @property (nonatomic, copy)void (^openLockSuccess)(NSString *lockId);//开锁成功block
-@property (nonatomic, copy)void (^openLockFailed)(NSString *lockId);//开锁成功block
+@property (nonatomic, copy)void (^openLockFailed)(NSString *lockId,NSString *errorMsg);//开锁成功block
 
 /// 中央管理者 -->管理设备的扫描 --连接
 @property (nonatomic, strong) CBCentralManager *centralManager;
@@ -368,8 +368,8 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
             }
             
             QHLockerStatus lockerStatus = byte;
-            
-            _receivedLockerNo?_receivedLockerNo(_lockNo,lockerStatus):NULL;
+            __weak typeof(_lockNo) weakLockNo = _lockNo;
+            _receivedLockerNo?_receivedLockerNo(weakLockNo,lockerStatus):NULL;
         }
         
     }
@@ -381,15 +381,16 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
             byte = bytes[10];
         }
         
+        __weak typeof(_lockNo) weakLockNo = _lockNo;
         switch (byte) {
             case 0x55://开锁成功
                 [[AMRPlayerTool share] playAudioWithName:@"open_success" type:@"mp3"];
-                _openLockSuccess?_openLockSuccess(_lockNo):NULL;
+                _openLockSuccess?_openLockSuccess(weakLockNo):NULL;
                 break;
             case 0Xa0://开锁失败
             case 0Xaa://快递锁无响应
                 [[AMRPlayerTool share] playAudioWithName:@"open_fail" type:@"mp3"];
-                _openLockFailed?_openLockFailed(_lockNo):NULL;
+                _openLockFailed?_openLockFailed(weakLockNo,@"开锁失败"):NULL;
                 break;
             default:
                 break;
@@ -481,10 +482,9 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
     return retData;
 }
 
-
--(void)openLockSuccess:(void (^)(NSString *lockId))success failure:(void (^)(NSString *errorMsg))failure{
+- (void)openLockSuccess:(void (^)(NSString *))success failure:(void (^)(NSString *, NSString *))failure{
     if (!_lockNoDate) {
-        failure(@"请用开锁器接触盒子锁");
+        failure(nil,@"请用开锁器接触盒子锁");
         return;
     }
     _openLockSuccess = success;

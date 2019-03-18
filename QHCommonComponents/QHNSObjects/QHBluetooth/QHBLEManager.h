@@ -15,17 +15,16 @@ typedef NS_ENUM(NSUInteger, QHLockerStatus) {
 };
 
 @interface QHBLEManager : NSObject
-
 @property (nonatomic, strong)CBPeripheral *cbPeripheral;// 当前连接设备
 @property (nonatomic,strong)NSString *keyDeviceId;//从服务器取的开锁器id;
-@property (nonatomic,copy)void(^receivedLockerNo)(NSString *lockerNo,QHLockerStatus status); // 返回锁(盒子)的number;
+@property (nonatomic,copy)void(^receivedLockerNo)(NSString *lockerNo,QHLockerStatus status); //返回锁(盒子)的number和状态;
 @property (nonatomic,copy)void(^battery)(NSInteger battery); // 获取电量信息
 
 +(QHBLEManager *)share;
 /** 根据蓝牙名连接蓝牙设备 */
 -(void)connectPeripheralWithName:(NSString *)peripheralName success:(void (^)(void))success failure:(void (^)(NSString *errorMsg))failure;
 /** 开锁 */
--(void)openLockSuccess:(void (^)(NSString *lockId))success failure:(void (^)(NSString *errorMsg))failure;
+-(void)openLockSuccess:(void (^)(NSString *lockId))success failure:(void (^)(NSString *lockId,NSString *errorMsg))failure;
 /** 断开开锁器连接 */
 - (void)disConnectDeviceComplete:(void (^ _Nullable)(NSString *errorMsg))complete;
 
