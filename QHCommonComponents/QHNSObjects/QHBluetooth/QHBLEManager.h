@@ -16,8 +16,8 @@ typedef NS_ENUM(NSUInteger, QHLockerStatus) {
 
 @interface QHBLEManager : NSObject
 
-@property (nonatomic, strong) CBPeripheral *cbPeripheral;// 当前连接设备
-@property (nonatomic,assign)NSInteger keyDeviceId;//二维码扫描后根据二维码信息从服务器取的开锁器id;
+@property (nonatomic, strong)CBPeripheral *cbPeripheral;// 当前连接设备
+@property (nonatomic,strong)NSString *keyDeviceId;//从服务器取的开锁器id;
 @property (nonatomic,copy)void(^receivedLockerNo)(NSString *lockerNo,QHLockerStatus status); // 返回锁(盒子)的number;
 @property (nonatomic,copy)void(^battery)(NSInteger battery); // 获取电量信息
 
