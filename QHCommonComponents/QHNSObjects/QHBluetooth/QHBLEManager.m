@@ -6,6 +6,7 @@
 //
 
 #import "QHBLEManager.h"
+#import "AMRPlayerTool.h"
 
 //心跳服务和特征
 NSString *const HeartServiceUUID = @"99F788A8-F20A-4EFE-84F9-06D28484E41A";
@@ -97,6 +98,7 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
         case CBManagerStateUnsupported:
         case CBManagerStateUnauthorized:
         case CBManagerStatePoweredOff:
+            [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
             _connectPeripheralFailed?_connectPeripheralFailed(@"蓝牙初始化失败，请检查是否打开蓝牙"):NULL;
             break;
         case CBManagerStatePoweredOn:
@@ -216,6 +218,7 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if ([peripheral.name isEqualToString:_peripheralName]) {
+        [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
         _connectPeripheralFailed?_connectPeripheralFailed(@"开锁器连接失败"):NULL;
     }
 }
@@ -245,7 +248,8 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
     if (error) {
-        _connectPeripheralFailed?_connectPeripheralFailed(@"开锁器连接失败"):NULL;
+        [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
+        _connectPeripheralFailed?_connectPeripheralFailed(error.localizedDescription):NULL;
     }else{
         if (_currentScanIndex < self.cbPeripheral.services.count) {
             // 根据服务去扫描特征
@@ -266,6 +270,7 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
     if (error) {
+        [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
         _connectPeripheralFailed?_connectPeripheralFailed(error.localizedDescription):NULL;
     }else{
         NSString *characteristicsUUIDString = service.characteristics.firstObject.UUID.UUIDString.lowercaseString;
@@ -318,6 +323,7 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
             //当所有需要用到的服务和特征都扫描成功后表示连接成功
             _currentScanIndex ++;
             _connectPeripheralSuccess?_connectPeripheralSuccess():NULL;
+            [[AMRPlayerTool share] playAudioWithName:@"connect" type:@"mp3"];
         }
     }
     
@@ -377,10 +383,12 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
         
         switch (byte) {
             case 0x55://开锁成功
+                [[AMRPlayerTool share] playAudioWithName:@"open_success" type:@"mp3"];
                 _openLockSuccess?_openLockSuccess(_lockNo):NULL;
                 break;
             case 0Xa0://开锁失败
             case 0Xaa://快递锁无响应
+                [[AMRPlayerTool share] playAudioWithName:@"open_fail" type:@"mp3"];
                 _openLockFailed?_openLockFailed(_lockNo):NULL;
                 break;
             default:
