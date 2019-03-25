@@ -101,7 +101,9 @@
     if ([peripheral.name containsString:@"QHIOT"]) {
         if (![_peripherals containsObject:peripheral]) {
             [_peripherals addObject:peripheral];
-            _didFindPeripheral?_didFindPeripheral(_peripherals,peripheral):NULL;
+            __weak typeof(_peripherals) _weakPeripherals = _peripherals;
+            __weak typeof(peripheral) weakPeripheral = peripheral;
+            _didFindPeripheral?_didFindPeripheral(_weakPeripherals,weakPeripheral):NULL;
         }
     }
 }
