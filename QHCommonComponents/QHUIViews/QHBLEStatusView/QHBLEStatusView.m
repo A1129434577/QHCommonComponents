@@ -7,7 +7,6 @@
 //
 
 #import "QHBLEStatusView.h"
-#import "UIButton+init.h"
 
 #define QHBLE_DISCONNECT_IMAGE [UIImage imageNamed:@"ble_locker_disconnect"]
 #define QHBLE_CONNECTING_IMAGE [UIImage imageNamed:@"ble_locker_connection"]
@@ -48,10 +47,8 @@
         _batteryView.enabled = NO;
         [_batteryView setImage:QHBLE_BATTERY_IMAGE forState:UIControlStateNormal];
         
-        WEAKSELF
-        _reconnectButton = [[UIButton alloc] initWithFrame:CGRectZero action:^(UIButton * _Nonnull __weak sender) {
-            weakSelf.reConnect?weakSelf.reConnect():NULL;
-        }];
+        _reconnectButton = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_reconnectButton addTarget:self action:@selector(reconnectButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [_reconnectButton setTitleColor:THEME_GREEN forState:UIControlStateNormal];
         _reconnectButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_reconnectButton setImage:QHBLE_RCONNECT_IMAGE forState:UIControlStateNormal];
@@ -167,11 +164,10 @@
         
         
     });
-    
-    
-    
-    
+}
 
+-(void)reconnectButtonAction{
+    self.reConnect?self.reConnect():NULL;
 }
 @end
 

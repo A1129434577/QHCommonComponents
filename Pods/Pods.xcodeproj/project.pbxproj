@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -154,7 +154,7 @@
 /* Begin PBXFileReference section */
 		028E6797B68EEA1D74BE03A237B75F84 /* Pods-QHCommonComponentsExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QHCommonComponentsExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		07AFF4CCFE6FEA8D2032A8A061C4B9A1 /* LBAlertController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LBAlertController.m; path = CommonComponents/UIViewControllers/LBAlertController/LBAlertController.m; sourceTree = "<group>"; };
-		090DAD646738293B883C2334B9AE3C38 /* libCommonComponents.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCommonComponents.a; path = libCommonComponents.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		090DAD646738293B883C2334B9AE3C38 /* libCommonComponents.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommonComponents.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8D8B033CE4A2BABC73F4545A49F4B4 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		0CF152D2CDA7581B2C68A25403FE38B3 /* UIImage+MemoryCacheCost.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemoryCacheCost.h"; path = "SDWebImage/UIImage+MemoryCacheCost.h"; sourceTree = "<group>"; };
 		0EBA61206A0CD93F9DA6D7F8AA0A3503 /* SDWebImageCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCoder.h; path = SDWebImage/SDWebImageCoder.h; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		204612A848B0E8073D5C75C63F6CF401 /* Pods-QHCommonComponentsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QHCommonComponentsExample.release.xcconfig"; sourceTree = "<group>"; };
 		21157FD2FA9F0428F91B9AAB064E958B /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
 		2115C506BC5BA4EB59389C5F644680F7 /* LBTitleAndInputCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LBTitleAndInputCell.m; path = CommonComponents/UIViews/LBTitleAndInputCell/LBTitleAndInputCell.m; sourceTree = "<group>"; };
-		23B5CD056265A3BFDF02250091B33A84 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSVProgressHUD.a; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		23B5CD056265A3BFDF02250091B33A84 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FA8E70FE2465730C85577B31CF9308 /* XHPayKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XHPayKit.m; path = XHPayKit/XHPayKit.m; sourceTree = "<group>"; };
 		280DCC6D5A3755211FFB505852CFA9B5 /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		2828B9747E5600939B0D2103C827FF3C /* NSDictionary+XHPayKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+XHPayKit.h"; path = "XHPayKit/NSDictionary+XHPayKit.h"; sourceTree = "<group>"; };
@@ -224,10 +224,10 @@
 		84A8FA173EEC661BBD0B0B6D2338275D /* LBAESEncrypt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LBAESEncrypt.m; path = CommonComponents/NSObjects/LBEncrypt/LBAESEncrypt/LBAESEncrypt.m; sourceTree = "<group>"; };
 		8ACD5C2F258E7586FD5218B975021C34 /* NSString+XHPayKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+XHPayKit.m"; path = "XHPayKit/NSString+XHPayKit.m"; sourceTree = "<group>"; };
 		8CA3A87C5B122C68AB926186B08BEE01 /* NSString+XHPayKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+XHPayKit.h"; path = "XHPayKit/NSString+XHPayKit.h"; sourceTree = "<group>"; };
-		9085AFFDB8908827165D2ABFD4757AE2 /* libPods-QHCommonComponentsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-QHCommonComponentsExample.a"; path = "libPods-QHCommonComponentsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9085AFFDB8908827165D2ABFD4757AE2 /* libPods-QHCommonComponentsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QHCommonComponentsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91880F010C1C0EB2803DAC2C16246204 /* Pods-QHCommonComponentsExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QHCommonComponentsExample-resources.sh"; sourceTree = "<group>"; };
 		91AD56D0B7BD7A6BD52E9D2340FC1D26 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93CBA6ACAE4E1DCAC4040C6C674B8029 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		9476D4EE5E9BC050860859BEAFAA1681 /* XHPayWxReq.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XHPayWxReq.m; path = XHPayKit/XHPayWxReq.m; sourceTree = "<group>"; };
 		98121C4B3A84BEAAEF55A2A0E8BBC8E5 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/SDAnimatedImageRep.h; sourceTree = "<group>"; };
@@ -235,8 +235,8 @@
 		9EC88249E844026E0D145835857D03E3 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebCache.m"; path = "SDWebImage/UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		A2556431586CB6A4BB4E56767A96574D /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
 		A4707164FBB597EE0BD637BB58B4BC3F /* UIImage+ForceDecode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ForceDecode.m"; path = "SDWebImage/UIImage+ForceDecode.m"; sourceTree = "<group>"; };
-		A6BF622773020587713F6DCEC3308014 /* libXHPayKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libXHPayKit.a; path = libXHPayKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6D5C66D7A4A5A8AFC17416A5B6B730C /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6BF622773020587713F6DCEC3308014 /* libXHPayKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXHPayKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6D5C66D7A4A5A8AFC17416A5B6B730C /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB880F5EC74C94CBFFEF9B7E83C2D144 /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
 		AE507DA518D554B0034E87C8E416FD02 /* LBFunctionalTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LBFunctionalTextField.m; path = CommonComponents/UIViews/LBFunctionalTextField/LBFunctionalTextField.m; sourceTree = "<group>"; };
 		AE6FC57E83120461505DCC5142ACADB2 /* UILabel+init.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+init.m"; path = "CommonComponents/UIViews/UIViewInit/UILabel+init.m"; sourceTree = "<group>"; };
@@ -342,7 +342,6 @@
 				9476D4EE5E9BC050860859BEAFAA1681 /* XHPayWxReq.m */,
 				F59F835C1FAC66A6BB743D2FFC257C05 /* Support Files */,
 			);
-			name = XHPayKit;
 			path = XHPayKit;
 			sourceTree = "<group>";
 		};
@@ -395,7 +394,6 @@
 				20017B0CEF128873F242F1931558440A /* UIViewControllers */,
 				81FEEEA22BE57B2C002EDF9417E32D93 /* UIViews */,
 			);
-			name = CommonComponents;
 			path = CommonComponents;
 			sourceTree = "<group>";
 		};
@@ -446,7 +444,6 @@
 				680DAB360A104119ADDDB16947A6516C /* Core */,
 				647AE60BDE759A3D22B4C3EE89A8C9A1 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -546,7 +543,6 @@
 				EA6DEE1FC53D2E8902AFE8A0944EADA2 /* Resources */,
 				E3D8AEF81AC4731FB4225FAE9B2EABFF /* Support Files */,
 			);
-			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -904,7 +900,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1125,7 +1121,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -1149,7 +1145,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/XHPayKit/XHPayKit-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -1172,7 +1168,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/XHPayKit/XHPayKit-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -1196,7 +1192,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";

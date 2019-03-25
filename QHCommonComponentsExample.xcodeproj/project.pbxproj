@@ -18,6 +18,8 @@
 		4073706B2224E2D600F04A64 /* lighten@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407370662224E2D600F04A64 /* lighten@3x.png */; };
 		4073706C2224E2D600F04A64 /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407370672224E2D600F04A64 /* QRViewController.m */; };
 		407370702225088100F04A64 /* QHPayKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4073706F2225088100F04A64 /* QHPayKit.m */; };
+		408585452248711400030DDC /* location_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408585422248711400030DDC /* location_green@2x.png */; };
+		408585462248711400030DDC /* QHMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408585432248711400030DDC /* QHMapView.m */; };
 		409C928522290658005E8A1E /* battery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C927E22290658005E8A1E /* battery@2x.png */; };
 		409C928822290658005E8A1E /* ble_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C928222290658005E8A1E /* ble_refresh@3x.png */; };
 		409C928A22290658005E8A1E /* QHBLEStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C928422290658005E8A1E /* QHBLEStatusView.m */; };
@@ -67,6 +69,9 @@
 		407370672224E2D600F04A64 /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
 		4073706E2225088100F04A64 /* QHPayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QHPayKit.h; sourceTree = "<group>"; };
 		4073706F2225088100F04A64 /* QHPayKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QHPayKit.m; sourceTree = "<group>"; };
+		408585422248711400030DDC /* location_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_green@2x.png"; sourceTree = "<group>"; };
+		408585432248711400030DDC /* QHMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHMapView.m; sourceTree = "<group>"; };
+		408585442248711400030DDC /* QHMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHMapView.h; sourceTree = "<group>"; };
 		409C927E22290658005E8A1E /* battery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battery@2x.png"; sourceTree = "<group>"; };
 		409C927F22290658005E8A1E /* QHBLEStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHBLEStatusView.h; sourceTree = "<group>"; };
 		409C928222290658005E8A1E /* ble_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_refresh@3x.png"; sourceTree = "<group>"; };
@@ -185,9 +190,20 @@
 			path = "NSObject+SVProgressHUD";
 			sourceTree = "<group>";
 		};
+		408585412248711400030DDC /* QHMapView */ = {
+			isa = PBXGroup;
+			children = (
+				408585422248711400030DDC /* location_green@2x.png */,
+				408585442248711400030DDC /* QHMapView.h */,
+				408585432248711400030DDC /* QHMapView.m */,
+			);
+			path = QHMapView;
+			sourceTree = "<group>";
+		};
 		409C927C22290658005E8A1E /* QHUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				408585412248711400030DDC /* QHMapView */,
 				409C927D22290658005E8A1E /* QHBLEStatusView */,
 			);
 			path = QHUIViews;
@@ -464,6 +480,7 @@
 				407370692224E2D600F04A64 /* lighten_s@3x.png in Resources */,
 				40D4487722240871009B77C7 /* user_not_auth.mp3 in Resources */,
 				402CAE6B2227C7CA0050BD49 /* qr_left_arrow@3x.png in Resources */,
+				408585452248711400030DDC /* location_green@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +548,7 @@
 				40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */,
 				40D4487222240871009B77C7 /* AMRPlayerTool.m in Sources */,
 				40EDF27F2227725B0098B11F /* NSObject+SVProgressHUD.m in Sources */,
+				408585462248711400030DDC /* QHMapView.m in Sources */,
 				40D4488122240871009B77C7 /* QHBLEManager.m in Sources */,
 				40D448022223E1A1009B77C7 /* main.m in Sources */,
 				40D4485A22240779009B77C7 /* QHPayWaysSelectVC.m in Sources */,
