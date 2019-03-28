@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## CommonComponents
+## LBCommonComponents
 
 Copyright (c) 2019 A1129434577 <1129434577@qq.com>
 

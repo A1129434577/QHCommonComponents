@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'QHCommonComponents'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'QHCommonComponents of QHWL project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -13,7 +13,7 @@ TODO: Add long description of the pod here.
 
  
   s.subspec 'QHMacros' do |ss|
-    ss.dependency 'CommonComponents/Macros'
+    ss.dependency 'LBCommonComponents/Macros'
 
     ss.source_files = 'QHCommonComponents/QHMacros/**/*'
     ss.prefix_header_contents = <<-EOS
@@ -30,7 +30,7 @@ TODO: Add long description of the pod here.
     ss.dependency 'QHCommonComponents/QHMacros'
 
     ss.subspec 'QHEncryptHelper' do |sss|
-      sss.dependency 'CommonComponents/NSObjects/LBEncrypt'
+      sss.dependency 'LBCommonComponents/NSObjects/LBEncrypt'
       sss.source_files = 'QHCommonComponents/QHNSObjects/QHEncryptHelper/**/*'
     end
     
@@ -70,13 +70,13 @@ TODO: Add long description of the pod here.
 
     ss.subspec 'QHPayWaysSelectVC' do |sss|
       sss.dependency 'SDWebImage'
-      sss.dependency 'CommonComponents/NSObjects/LBCustemPresentTransitions'
+      sss.dependency 'LBCommonComponents/NSObjects/LBCustemPresentTransitions'
       sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHPayWaysSelectVC/**/*.{h,m}'
       sss.resource = 'QHCommonComponents/QHUIViewControllers/QHPayWaysSelectVC/**/*.png'
     end
     
     ss.subspec 'QHAlertController' do |sss|
-      sss.dependency 'CommonComponents/UIViewControllers/LBAlertController'
+      sss.dependency 'LBCommonComponents/UIViewControllers/LBAlertController'
       sss.source_files = 'QHCommonComponents/QHUIViewControllers/QHAlertController/**/*'
     end
 

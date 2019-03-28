@@ -15,7 +15,7 @@
 
 @interface QHEncrypt : NSObject
 +(NSData *)encryptParameters:(id)parameters;
-+(id)decryptionData:(NSData *)data;
++(NSData *)decryptionData:(NSData *)data;
 //将NSString转换成十六进制的字符串则可使用如下方式:
 + (NSString *)convertToHexStr:(NSData *)data;
 @end

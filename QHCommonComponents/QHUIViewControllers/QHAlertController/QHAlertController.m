@@ -14,7 +14,7 @@
 
 @implementation QHAlertController
 
--(LBAlertActionButton *)addActionTitle:(nonnull NSString *)actionTitle action:(__nullable LBAlertAction)action{
+- (LBAlertActionButton *)addActionTitle:(NSString *)actionTitle action:(void (^)(LBAlertActionButton * _Nonnull))action{
     
     CGFloat actionBtnWidth = CGRectGetWidth(self.view.bounds)/(self.buttonArray.count+1);
     
@@ -22,11 +22,10 @@
         obj.frame = CGRectMake(0, 0, actionBtnWidth, 40);
     }];
     
-    LBAlertActionButton *actionBtn = [[LBAlertActionButton alloc] initWithFrame:CGRectMake(0, 0, actionBtnWidth, 40) action:^(UIButton *sender) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            if (action) {
-                action(sender,self.userView.userInfo);
-            }
+    __weak typeof(self) weakSelf = self;
+    LBAlertActionButton *actionBtn = [[LBAlertActionButton alloc] initWithFrame:CGRectMake(0, 0, actionBtnWidth, 40) action:^(LBAlertActionButton *sender) {
+        [weakSelf dismissViewControllerAnimated:YES completion:^{
+            action?action(sender):NULL;
         }];
     }];
     actionBtn.titleLabel.font = [UIFont systemFontOfSize:15];

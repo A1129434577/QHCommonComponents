@@ -29,10 +29,10 @@
     
     return [[self convertToHexStr:parametersEncryptedData] dataUsingEncoding:NSUTF8StringEncoding];
 }
-+(id )decryptionData:(NSData *)data{
++(NSData *)decryptionData:(NSData *)data{
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSData *decryptedData = [LBAESEncrypt AES128Decrypt:[self hexStringToData:dataString] withKey:AES_KEY];
-    return [NSJSONSerialization JSONObjectWithData:decryptedData options:kNilOptions error:nil];
+    return decryptedData;
 }
 
 

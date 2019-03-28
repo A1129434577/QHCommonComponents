@@ -49,11 +49,11 @@
     if ([testTitle containsString:@"QHAlertController"]){
         QHAlertController *qhAlertC = [[QHAlertController alloc] initWithAlertTitle:@"提示" message:@"巧盒物联弹窗测试"];
         [self presentViewController:qhAlertC animated:YES completion:NULL];
-        [qhAlertC addActionTitle:@"确定" action:^(UIButton *sender, NSDictionary *userInfo) {
-            ;
+        [qhAlertC addActionTitle:@"确定" action:^(LBAlertActionButton * _Nonnull sender) {
+            
         }];
-        [qhAlertC addActionTitle:@"取消" action:^(UIButton *sender, NSDictionary *userInfo) {
-            ;
+        [qhAlertC addActionTitle:@"取消" action:^(LBAlertActionButton * _Nonnull sender) {
+            
         }];
     }else if ([testTitle containsString:@"QHPayWaysSelectVC"]){
         QHPayWaysSelectVC *payWaysSelectVC = [[QHPayWaysSelectVC alloc] initWithPayWays:nil];

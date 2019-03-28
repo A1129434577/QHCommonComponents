@@ -24,7 +24,6 @@
 		409C928822290658005E8A1E /* ble_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409C928222290658005E8A1E /* ble_refresh@3x.png */; };
 		409C928A22290658005E8A1E /* QHBLEStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C928422290658005E8A1E /* QHBLEStatusView.m */; };
 		40D447FC2223E1A1009B77C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FB2223E1A1009B77C7 /* Assets.xcassets */; };
-		40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */; };
 		40D448022223E1A1009B77C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D448012223E1A1009B77C7 /* main.m */; };
 		40D4480E2223E1F1009B77C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4480A2223E1F1009B77C7 /* AppDelegate.m */; };
 		40D4480F2223E1F1009B77C7 /* QHComponentsExampleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4480C2223E1F1009B77C7 /* QHComponentsExampleVC.m */; };
@@ -78,7 +77,6 @@
 		409C928422290658005E8A1E /* QHBLEStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHBLEStatusView.m; sourceTree = "<group>"; };
 		40D447EF2223E1A0009B77C7 /* QHCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QHCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D447FB2223E1A1009B77C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		40D447FE2223E1A1009B77C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40D448002223E1A1009B77C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40D448012223E1A1009B77C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		40D448092223E1F1009B77C7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 				40D448082223E1F1009B77C7 /* AppDelegate */,
 				40D4480B2223E1F1009B77C7 /* QHComponentsExampleVC */,
 				40D447FB2223E1A1009B77C7 /* Assets.xcassets */,
-				40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */,
 				40D448002223E1A1009B77C7 /* Info.plist */,
 				40D448012223E1A1009B77C7 /* main.m */,
 				40D4484D22240124009B77C7 /* QHPrefixHeader.pch */,
@@ -462,7 +459,6 @@
 				406DAEEE222E103D000A7BE9 /* ble_locker_disconnect@3x.png in Resources */,
 				402CAE682227C7090050BD49 /* qh_pay_close@3x.png in Resources */,
 				40D4487822240871009B77C7 /* disconnect.mp3 in Resources */,
-				40D447FF2223E1A1009B77C7 /* LaunchScreen.storyboard in Resources */,
 				40D4487E22240871009B77C7 /* open_fail.mp3 in Resources */,
 				406DAEEF222E103D000A7BE9 /* ble_locker_connection@3x.png in Resources */,
 				40D4487922240871009B77C7 /* assign_fail.mp3 in Resources */,
@@ -495,18 +491,22 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample-resources.sh",
+				"${PODS_ROOT}/LBCommonComponents/LBCommonComponents/UIViewControllers/LBWebViewController/ic_back.png",
+				"${PODS_ROOT}/LBCommonComponents/LBCommonComponents/UIViewControllers/LBWebViewController/ic_forward.png",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_back.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_forward.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QHCommonComponentsExample/Pods-QHCommonComponentsExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5A0707A65BF36A2BBBF7B884 /* [CP] Check Pods Manifest.lock */ = {
@@ -557,17 +557,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		40D447FD2223E1A1009B77C7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40D447FE2223E1A1009B77C7 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		40D448032223E1A1009B77C7 /* Debug */ = {
@@ -687,8 +676,9 @@
 			baseConfigurationReference = D6061A0B3F720C52291EAF92 /* Pods-QHCommonComponentsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 58NS4B6N57;
+				DEVELOPMENT_TEAM = 8L8YGY7ZJ2;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QHCommonComponentsExample/QHPrefixHeader.pch";
 				INFOPLIST_FILE = QHCommonComponentsExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -697,7 +687,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.QHCommonComponentsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -706,8 +696,9 @@
 			baseConfigurationReference = 3471300344FDBD8DCFD51AA8 /* Pods-QHCommonComponentsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 58NS4B6N57;
+				DEVELOPMENT_TEAM = 8L8YGY7ZJ2;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QHCommonComponentsExample/QHPrefixHeader.pch";
 				INFOPLIST_FILE = QHCommonComponentsExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -716,7 +707,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.QHCommonComponentsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

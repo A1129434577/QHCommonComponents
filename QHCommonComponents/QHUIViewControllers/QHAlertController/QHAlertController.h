@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QHAlertController : LBAlertController
--(LBAlertActionButton *)addActionTitle:(nonnull NSString *)actionTitle action:(__nullable LBAlertAction)action;
+-(LBAlertActionButton *)addActionTitle:(NSString *_Nullable)actionTitle action:(void (^_Nullable)(LBAlertActionButton *_Nonnull sender))action;
 
 @end
 
