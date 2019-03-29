@@ -65,7 +65,7 @@ PODS:
   - XHPayKit (1.0.3)
 
 DEPENDENCIES:
-  - LBCommonComponents (~> 0.0.1)
+  - LBCommonComponents
   - SDWebImage
   - SVProgressHUD
   - XHPayKit
@@ -83,6 +83,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   XHPayKit: 068bb626d1591df95caf97eeb1682d875c20f7d9
 
-PODFILE CHECKSUM: c2ac5ecabbbb5c7c1f3bd652695b86b334085443
+PODFILE CHECKSUM: b45b0468bc5b2d170f6d4448aef2587d2030da44
 
 COCOAPODS: 1.6.1
