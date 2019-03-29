@@ -2,7 +2,7 @@ platform :ios, ‘8.0’
 
 target "QHCommonComponentsExample" do
 
-pod 'LBCommonComponents', '~> 0.0.1'
+pod 'LBCommonComponents'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'XHPayKit'
