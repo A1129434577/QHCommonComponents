@@ -25,8 +25,13 @@ NSString *const UnlockingServiceUUID = @"FD7550BD-F43D-43C3-866B-1F39507A7FD3";
 NSString *const UnlockingCharacteristicsUUID = @"39a36eb2-ca06-4163-b49a-76e64ec79a93";
 
 //电量服务和特征
-NSString *const BatteryServiceUUID = @"0x180F";
+NSString *const BatteryServiceUUID = @"180F";
 NSString *const BatteryCharacteristicsUUID = @"2a19";
+
+//软硬件版本服务
+NSString *const VersionServiceUUID = @"180A";
+//软件版本特征
+NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 
 
 @interface QHBLEManager()<CBCentralManagerDelegate,CBPeripheralDelegate>
@@ -45,6 +50,7 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 
 @property (nonatomic, strong)NSString *lockNo;//锁（盒子）设备No
 @property (nonatomic, strong)NSData *lockNoDate;//锁（盒子）设备NoData
+@property (nonatomic, strong)NSString *softwareVersion;//开锁器软件版本
 
 @property (nonatomic, copy)void (^connectPeripheralSuccess)(void);//开锁设备链接成功block
 @property (nonatomic, copy)void (^connectPeripheralFailed)(NSString *errorMsg);//开锁设备链接失败block
@@ -70,11 +76,13 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
         bluetooth = [[QHBLEManager alloc] init];
         
         //服务列表（会根据服务列表去依次查询特征列表，依次查询完成之后才标注蓝牙连接成功）
-        bluetooth.serviceUUIDArray = @[[CBUUID UUIDWithString:HeartServiceUUID],
-                                [CBUUID UUIDWithString:KeyServiceUUID],
-                                [CBUUID UUIDWithString:ReportServiceUUID],
-                                [CBUUID UUIDWithString:UnlockingServiceUUID],
-                                [CBUUID UUIDWithString:BatteryServiceUUID]];
+        bluetooth.serviceUUIDArray = @[
+                                       [CBUUID UUIDWithString:VersionServiceUUID],
+                                       [CBUUID UUIDWithString:HeartServiceUUID],
+                                       [CBUUID UUIDWithString:KeyServiceUUID],
+                                       [CBUUID UUIDWithString:ReportServiceUUID],
+                                       [CBUUID UUIDWithString:UnlockingServiceUUID],
+                                       [CBUUID UUIDWithString:BatteryServiceUUID]];
         
         //初始化公钥
         Byte byte[] = {0x04,0x02,0x05,0x09};
@@ -273,45 +281,92 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
         [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
         _connectPeripheralFailed?_connectPeripheralFailed(error.localizedDescription):NULL;
     }else{
-        NSString *characteristicsUUIDString = service.characteristics.firstObject.UUID.UUIDString.lowercaseString;
-        CBCharacteristic *currentCharacteristic = service.characteristics.firstObject;
-        //链接成功发送心跳包保持链接
-        if ([characteristicsUUIDString containsString:HeartCharacteristicsUUID]) {
-            
-            _heardCharacteristic = currentCharacteristic;
-            
-            NSTimeInterval period = 4.0; //设置时间间隔
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            _heartTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-            dispatch_source_set_timer(_heartTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
-            __weak typeof(self) weakSelf = self;
-            dispatch_source_set_event_handler(_heartTimer, ^{
-                Byte byte[] = {0xAA};
-                [self.cbPeripheral writeValue:[NSData dataWithBytes:byte length:sizeof(byte)] forCharacteristic:weakSelf.heardCharacteristic type:CBCharacteristicWriteWithResponse];
-
-            });
-            dispatch_resume(_heartTimer);
-        }
-        else if ([characteristicsUUIDString containsString:KeyCharacteristicsUUID]){
-            _keyCharacteristic = currentCharacteristic;
-            if (!_privateKey) {
-                [self.cbPeripheral setNotifyValue:YES forCharacteristic:currentCharacteristic];// 设置监听
-                [self.cbPeripheral writeValue:_publicKeyData forCharacteristic:currentCharacteristic type:CBCharacteristicWriteWithResponse];
+        NSString *serviceUUIDString = service.UUID.UUIDString.uppercaseString;
+        
+        if ([serviceUUIDString isEqualToString:VersionServiceUUID]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
+                if ([characteristicsUUIDString isEqualToString:SoftwareVersionCharacteristicsUUID]){
+                    [self.cbPeripheral readValueForCharacteristic:characteristic];
+                    break;
+                }
             }
         }
-        else if ([characteristicsUUIDString containsString:ReportCharacteristicsUUID]){
-            _reportCharacteristic = currentCharacteristic;
-            [self.cbPeripheral setNotifyValue:YES forCharacteristic:currentCharacteristic]; // 设置监听
+        else if ([serviceUUIDString isEqualToString:HeartServiceUUID]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
+                
+                //链接成功发送心跳包保持链接
+                if ([characteristicsUUIDString isEqualToString:HeartCharacteristicsUUID]) {
+                    
+                    _heardCharacteristic = characteristic;
+                    
+                    NSTimeInterval period = 4.0; //设置时间间隔
+                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                    _heartTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+                    dispatch_source_set_timer(_heartTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
+                    __weak typeof(self) weakSelf = self;
+                    dispatch_source_set_event_handler(_heartTimer, ^{
+                        Byte byte[] = {0xAA};
+                        [self.cbPeripheral writeValue:[NSData dataWithBytes:byte length:sizeof(byte)] forCharacteristic:weakSelf.heardCharacteristic type:CBCharacteristicWriteWithResponse];
+                        
+                    });
+                    dispatch_resume(_heartTimer);
+                    
+                    break;
+                }
+            }
+            
+        }else if ([serviceUUIDString isEqualToString:KeyServiceUUID]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
+                if ([characteristicsUUIDString isEqualToString:KeyCharacteristicsUUID]){
+                    
+                    _keyCharacteristic = characteristic;
+                    if (!_privateKey) {
+                        [self.cbPeripheral setNotifyValue:YES forCharacteristic:characteristic];// 设置监听
+                        [self.cbPeripheral writeValue:_publicKeyData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+                    }
+                    break;
+                }
+            }
+            
+        }else if ([serviceUUIDString isEqualToString:ReportServiceUUID]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
+                if ([characteristicsUUIDString isEqualToString:ReportCharacteristicsUUID]){
+                    
+                    _reportCharacteristic = characteristic;
+                    [self.cbPeripheral setNotifyValue:YES forCharacteristic:characteristic]; // 设置监听
+                    break;
+                    
+                }
+            }
+            
+        }else if ([serviceUUIDString isEqualToString:UnlockingServiceUUID]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
+                if ([characteristicsUUIDString isEqualToString:UnlockingCharacteristicsUUID]){
+                    
+                    _unlockCharacteristic = characteristic;
+                    [self.cbPeripheral setNotifyValue:YES forCharacteristic:characteristic]; // 设置监听
+                    break;
+                    
+                }
+            }
+            
+        }else if ([serviceUUIDString isEqualToString:BatteryServiceUUID]) {
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
+                if ([characteristicsUUIDString isEqualToString:BatteryCharacteristicsUUID]){
+                    _batteryCharacteristic = characteristic;
+                    [self startGetBattery];
+                    break;
+                }
+            }
+            
         }
-        else if ([characteristicsUUIDString containsString:UnlockingCharacteristicsUUID]){
-            _unlockCharacteristic = currentCharacteristic;
-            [self.cbPeripheral setNotifyValue:YES forCharacteristic:currentCharacteristic]; // 设置监听
-        }
-        else if ([characteristicsUUIDString containsString:BatteryCharacteristicsUUID]){
-            _batteryCharacteristic = currentCharacteristic;
-            [self startGetBattery];
-        }
-
+        
         
         //其他逻辑
         if (_currentScanIndex < _serviceUUIDArray.count-1) {//因为这里进行先加后再加入运算所以要-1
@@ -331,18 +386,34 @@ NSString *const BatteryCharacteristicsUUID = @"2a19";
 
 
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error{
+    NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
     
     NSData *receivedDate = [self decrypt:characteristic.value];
     
-    if (characteristic == _keyCharacteristic){
+    if ([characteristicsUUIDString isEqualToString:SoftwareVersionCharacteristicsUUID]){
+        _softwareVersion = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+    }
+    else if (characteristic == _keyCharacteristic){
         // 用公钥与锁返回的私钥进行如下异或操作，产生新的APP端用的私钥
         Byte *publickey = (Byte *)[_publicKeyData bytes];
         Byte *lockKey = (Byte *)[receivedDate bytes];
-        int a = (int)(publickey[0] ^ lockKey[3]);
-        int b = (int)(publickey[3] ^ lockKey[2]);
-        int c = (int)(publickey[2] ^ lockKey[0]);
-        int d = (int)(publickey[1] ^ lockKey[1]);
-        self.privateKey = (a + b) ^ (c + d);
+        NSString *versionString = _softwareVersion;
+        if ([versionString containsString:@"V"] || [versionString containsString:@"v"]) {
+            versionString = [versionString substringFromIndex:1];
+        }
+        if (versionString.integerValue < 3) {
+            int a = (int)(publickey[0] ^ lockKey[3]);
+            int b = (int)(publickey[3] ^ lockKey[2]);
+            int c = (int)(publickey[2] ^ lockKey[0]);
+            int d = (int)(publickey[1] ^ lockKey[1]);
+            self.privateKey = (a + b) ^ (c + d);
+        }else{//开锁器软件版本大于等于V3.0的时候用一下算法
+            int a = (int)(publickey[1] ^ lockKey[3]);
+            int b = (int)(publickey[3] ^ lockKey[2]);
+            int c = (int)(publickey[2] ^ lockKey[1]);
+            int d = (int)(publickey[0] ^ lockKey[0]);
+            self.privateKey = (a + b) ^ (c + d);
+        }
     }
     else if (characteristic == _reportCharacteristic){
         //获取到箱锁设备信息
