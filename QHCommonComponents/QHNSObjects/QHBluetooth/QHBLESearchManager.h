@@ -12,9 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QHBLESearchManager : NSObject
-@property (nonatomic, copy)void (^didFindPeripheral)(NSMutableArray<CBPeripheral *> *peripherals,CBPeripheral *peripheral);//搜索到开锁器;
+@property (nonatomic,copy,nullable)void (^didFindPeripheral)(NSMutableArray<CBPeripheral *> *peripherals,CBPeripheral *peripheral);//搜索到开锁器;
 /// 中央管理者
-@property (nonatomic, strong) CBCentralManager *centralManager;
+@property (nonatomic,strong,nullable) CBCentralManager *centralManager;
 
 +(QHBLESearchManager *)share;
 /** 搜索附近开锁器 */
