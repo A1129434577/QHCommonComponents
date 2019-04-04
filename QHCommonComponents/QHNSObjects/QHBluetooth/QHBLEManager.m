@@ -388,7 +388,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error{
     NSString *characteristicsUUIDString = characteristic.UUID.UUIDString.lowercaseString;
     
-    NSData *receivedDate = [self decrypt:characteristic.value];
+    NSData *receiveDecryptedDate = [self decrypt:characteristic.value];
     
     if ([characteristicsUUIDString isEqualToString:SoftwareVersionCharacteristicsUUID]){
         _softwareVersion = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
@@ -396,29 +396,29 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
     else if (characteristic == _keyCharacteristic){
         // 用公钥与锁返回的私钥进行如下异或操作，产生新的APP端用的私钥
         Byte *publickey = (Byte *)[_publicKeyData bytes];
-        Byte *lockKey = (Byte *)[receivedDate bytes];
+        Byte *key = (Byte *)[characteristic.value bytes];
         NSString *versionString = _softwareVersion;
         if ([versionString containsString:@"V"] || [versionString containsString:@"v"]) {
             versionString = [versionString substringFromIndex:1];
         }
         if (versionString.integerValue < 3) {
-            int a = (int)(publickey[0] ^ lockKey[3]);
-            int b = (int)(publickey[3] ^ lockKey[2]);
-            int c = (int)(publickey[2] ^ lockKey[0]);
-            int d = (int)(publickey[1] ^ lockKey[1]);
+            int a = (int)(publickey[0] ^ key[3]);
+            int b = (int)(publickey[3] ^ key[2]);
+            int c = (int)(publickey[2] ^ key[0]);
+            int d = (int)(publickey[1] ^ key[1]);
             self.privateKey = (a + b) ^ (c + d);
         }else{//开锁器软件版本大于等于V3.0的时候用一下算法
-            int a = (int)(publickey[1] ^ lockKey[3]);
-            int b = (int)(publickey[3] ^ lockKey[2]);
-            int c = (int)(publickey[2] ^ lockKey[1]);
-            int d = (int)(publickey[0] ^ lockKey[0]);
+            int a = (int)(publickey[1] ^ key[3]);
+            int b = (int)(publickey[3] ^ key[2]);
+            int c = (int)(publickey[2] ^ key[1]);
+            int d = (int)(publickey[0] ^ key[0]);
             self.privateKey = (a + b) ^ (c + d);
         }
     }
     else if (characteristic == _reportCharacteristic){
         //获取到箱锁设备信息
-        Byte *bytes = (Byte *)[receivedDate bytes];
-        int length = @([receivedDate length]).intValue;
+        Byte *bytes = (Byte *)[receiveDecryptedDate bytes];
+        int length = @([receiveDecryptedDate length]).intValue;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
         for (NSInteger i=3; i<length; i++) {
             if (i > 2 && i < 10) {
@@ -429,7 +429,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         
         _lockNo = [arr componentsJoinedByString:@""];
         if (_lockNo.length) {
-            _lockNoDate = receivedDate;
+            _lockNoDate = receiveDecryptedDate;
             [self sendAck:_lockNoDate];//接收到设备信息之后通知开锁器停止上报
             
             //获取锁状态
@@ -445,8 +445,8 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         
     }
     else if (characteristic == _unlockCharacteristic){//成功接收到开锁成功信息后标记开锁成功
-        Byte *bytes = (Byte *)[receivedDate bytes];
-        int length = @([receivedDate length]).intValue;
+        Byte *bytes = (Byte *)[receiveDecryptedDate bytes];
+        int length = @([receiveDecryptedDate length]).intValue;
         Byte byte = 0x00;
         if (length ==13) {
             byte = bytes[10];
