@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
-  s.homepage         = 'https://github.com/A1129434577'
+  s.homepage         = 'https://github.com'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'A1129434577' => '1129434577@qq.com' }
   s.source           = { :git => "https://github.com/A1129434577/QHCommonComponents.git", :tag => s.version.to_s }
