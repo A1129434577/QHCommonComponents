@@ -52,9 +52,6 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 @property (nonatomic, strong)NSData *lockNoDate;//锁（盒子）设备NoData
 @property (nonatomic, strong)NSString *softwareVersion;//开锁器软件版本
 
-@property (nonatomic, copy)void (^connectPeripheralSuccess)(void);//开锁设备链接成功block
-@property (nonatomic, copy)void (^connectPeripheralFailed)(NSString *errorMsg);//开锁设备链接失败block
-
 @property (nonatomic, copy)void (^openLockSuccess)(NSString *lockId);//开锁成功block
 @property (nonatomic, copy)void (^openLockFailed)(NSString *lockId,NSString *errorMsg);//开锁成功block
 
@@ -107,7 +104,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         case CBManagerStateUnauthorized:
         case CBManagerStatePoweredOff:
             [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
-            _connectPeripheralFailed?_connectPeripheralFailed(@"蓝牙初始化失败，请检查是否打开蓝牙"):NULL;
+            _peripheralDisconnected?_peripheralDisconnected(@"蓝牙初始化失败，请检查是否打开蓝牙"):NULL;
             break;
         case CBManagerStatePoweredOn:
         {
@@ -133,7 +130,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
                     
                     if (!self.cbPeripheral) {
                         [self.centralManager stopScan];//停止扫描
-                        weakSelf.connectPeripheralFailed?weakSelf.connectPeripheralFailed(@"未搜索到设备，请确保设备是否开启"):NULL;
+                        weakSelf.peripheralDisconnected?weakSelf.peripheralDisconnected(@"未搜索到设备，请确保设备是否开启"):NULL;
                     }
                 }
             });
@@ -148,7 +145,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 }
 
 
--(void)connectPeripheralWithName:(NSString *)peripheralName success:(void (^)(void))success failure:(void (^)(NSString *errorMsg))failure{
+-(void)connectPeripheralWithName:(NSString *)peripheralName success:(void (^)(void))success failure:(void (^)(NSString * _Nullable))failure{
     
     //如果蓝牙名没变且是链接状态，直接标记已连接
     if ([peripheralName isEqualToString:_peripheralName] && (_cbPeripheral.state == CBPeripheralStateConnected)) {
@@ -163,18 +160,18 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
         
         _peripheralName = peripheralName;
-        _connectPeripheralSuccess = success;
-        _connectPeripheralFailed = failure;
+        _peripheralConnected = success;
+        _peripheralDisconnected = failure;
     }
 }
 /** 断开开锁器连接 */
-- (void)disConnectDeviceComplete:(void (^ _Nullable)(NSString *errorMsg))complete{
+- (void)disConnectDeviceComplete:(void (^)(NSString * _Nullable))complete{
     if (self.cbPeripheral) {
         [_centralManager cancelPeripheralConnection:self.cbPeripheral];
     }
     _privateKey = 0;
     if (complete) {
-        _connectPeripheralFailed = complete;
+        _peripheralDisconnected = complete;
     }
     
 }
@@ -227,7 +224,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 {
     if ([peripheral.name isEqualToString:_peripheralName]) {
         [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
-        _connectPeripheralFailed?_connectPeripheralFailed(@"开锁器连接失败"):NULL;
+        _peripheralDisconnected?_peripheralDisconnected(@"开锁器连接失败"):NULL;
     }
 }
 
@@ -242,7 +239,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if ([peripheral.name isEqualToString:_peripheralName]) {
-        _connectPeripheralFailed?_connectPeripheralFailed(@"开锁器连接断开"):NULL;
+        _peripheralDisconnected?_peripheralDisconnected(@"开锁器连接断开"):NULL;
     }
 }
 
@@ -257,7 +254,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 {
     if (error) {
         [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
-        _connectPeripheralFailed?_connectPeripheralFailed(error.localizedDescription):NULL;
+        _peripheralDisconnected?_peripheralDisconnected(error.localizedDescription):NULL;
     }else{
         if (_currentScanIndex < self.cbPeripheral.services.count) {
             // 根据服务去扫描特征
@@ -279,7 +276,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 {
     if (error) {
         [[AMRPlayerTool share] playAudioWithName:@"disconnect" type:@"mp3"];
-        _connectPeripheralFailed?_connectPeripheralFailed(error.localizedDescription):NULL;
+        _peripheralDisconnected?_peripheralDisconnected(error.localizedDescription):NULL;
     }else{
         NSString *serviceUUIDString = service.UUID.UUIDString.uppercaseString;
         
@@ -377,7 +374,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         }else if (_currentScanIndex == _serviceUUIDArray.count-1){
             //当所有需要用到的服务和特征都扫描成功后表示连接成功
             _currentScanIndex ++;
-            _connectPeripheralSuccess?_connectPeripheralSuccess():NULL;
+            _peripheralConnected?_peripheralConnected():NULL;
             [[AMRPlayerTool share] playAudioWithName:@"connect" type:@"mp3"];
         }
     }
@@ -553,7 +550,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
     return retData;
 }
 
-- (void)openLockSuccess:(void (^)(NSString *))success failure:(void (^)(NSString *, NSString *))failure{
+- (void)openLockSuccess:(void (^)(NSString * _Nonnull))success failure:(void (^)(NSString * _Nullable, NSString * _Nullable))failure{
     if (!_lockNoDate) {
         failure(nil,@"请用开锁器接触盒子锁");
         return;

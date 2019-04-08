@@ -17,6 +17,9 @@ typedef NS_ENUM(NSUInteger, QHLockerStatus) {
 @interface QHBLEManager : NSObject
 @property (nonatomic,strong,nullable)CBPeripheral *cbPeripheral;// 当前连接设备
 @property (nonatomic,strong,nullable)NSString *keyDeviceId;//从服务器取的开锁器id;
+
+@property (nonatomic,copy,nullable)void (^peripheralConnected)(void);//开锁设备链接成功block
+@property (nonatomic,copy,nullable)void (^peripheralDisconnected)(NSString * _Nullable errorMsg);//开锁设备链接失败block
 @property (nonatomic,copy,nullable)void(^receivedLockerNo)(NSString *_Nonnull lockerNo,QHLockerStatus status); //返回锁(盒子)的number和状态;
 @property (nonatomic,copy,nullable)void(^battery)(NSInteger battery); // 获取电量信息
 
@@ -24,7 +27,7 @@ typedef NS_ENUM(NSUInteger, QHLockerStatus) {
 /** 根据蓝牙名连接蓝牙设备 */
 -(void)connectPeripheralWithName:(NSString *_Nonnull)peripheralName success:(void (^_Nullable)(void))success failure:(void (^_Nullable)(NSString *_Nullable errorMsg))failure;
 /** 开锁 */
--(void)openLockSuccess:(void (^_Nullable)(NSString *_Nonnull lockId))success failure:(void (^_Nullable)(NSString *_Nonnull lockId,NSString *_Nullable errorMsg))failure;
+-(void)openLockSuccess:(void (^_Nullable)(NSString *_Nonnull lockId))success failure:(void (^_Nullable)(NSString *_Nullable lockId,NSString *_Nullable errorMsg))failure;
 /** 断开开锁器连接 */
 - (void)disConnectDeviceComplete:(void (^ _Nullable)(NSString *_Nullable errorMsg))complete;
 
