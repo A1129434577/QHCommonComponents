@@ -154,7 +154,6 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         if (_cbPeripheral) {
             //当前链接了一个蓝牙需要取消其连接并清空私钥以保证能获取新的私钥
             [_centralManager cancelPeripheralConnection:_cbPeripheral];
-            _cbPeripheral = nil;
             _privateKey = 0;
         }
         _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
