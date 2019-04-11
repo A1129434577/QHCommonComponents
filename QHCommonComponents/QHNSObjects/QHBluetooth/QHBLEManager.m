@@ -298,7 +298,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
                     _heardCharacteristic = characteristic;
                     
                     NSTimeInterval period = 4.0; //设置时间间隔
-                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
                     _heartTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
                     dispatch_source_set_timer(_heartTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
                     __weak typeof(self) weakSelf = self;
@@ -474,8 +474,8 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 
 // 获取开锁器电量
 - (void)startGetBattery {
-    NSTimeInterval period = 10.; //设置时间间隔
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    NSTimeInterval period = 60; //设置时间间隔
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     _batteryTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_batteryTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(_batteryTimer, ^{
