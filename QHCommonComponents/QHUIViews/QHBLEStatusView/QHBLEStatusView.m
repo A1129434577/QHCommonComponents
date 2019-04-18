@@ -122,7 +122,7 @@
             {
                 weakSelf.statusImageView.image = QHBLE_CONNECTED_IMAGE;
                 weakSelf.statusLabel.textColor = THEME_GREEN;
-                weakSelf.statusLabel.text = @"开锁器已连接";
+                weakSelf.statusLabel.text = [NSString stringWithFormat:@"开锁器%@已连接",_deviceNo];
                 [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",(long)weakSelf.battery] forState:UIControlStateNormal];
                 
                 

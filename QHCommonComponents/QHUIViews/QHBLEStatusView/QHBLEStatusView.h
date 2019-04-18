@@ -16,6 +16,8 @@ typedef NS_ENUM(NSUInteger, QHBLEStatus) {
     QHBLEDisconnect,//链接失败
 };
 @interface QHBLEStatusView : UIView
+
+@property (nonatomic,strong)NSString *deviceNo;
 @property (nonatomic,assign)NSInteger battery;
 @property (nonatomic,assign)QHBLEStatus state;
 @property (nonatomic,copy)void(^reConnect)(void);
