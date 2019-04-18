@@ -22,7 +22,7 @@
 @property (nonatomic,strong)UILabel *statusLabel;
 @property (nonatomic,strong)UIButton *batteryView;
 @property (nonatomic,strong)UIButton *reconnectButton;
-@property (nonatomic,strong)UILabel *promptLabel;
+@property (nonatomic,strong)UILabel *deviceNoLabel;
 
 @end
 
@@ -54,16 +54,15 @@
         [_reconnectButton setImage:QHBLE_RCONNECT_IMAGE forState:UIControlStateNormal];
         [_reconnectButton setTitle:@"重新连接开锁器" forState:UIControlStateNormal];
         
-        _promptLabel = [[UILabel alloc] init];
-        _promptLabel.textAlignment = NSTextAlignmentCenter;
-        _promptLabel.font = [UIFont systemFontOfSize:14];
-        _promptLabel.text = @"请将开锁器放在盒子锁扣处感应";
+        _deviceNoLabel = [[UILabel alloc] init];
+        _deviceNoLabel.textAlignment = NSTextAlignmentCenter;
+        _deviceNoLabel.font = [UIFont systemFontOfSize:14];
         
         [self addSubview:_contentBgView];
         [_contentBgView addSubview:_statusImageView];
         [_contentBgView addSubview:_statusLabel];
         [_contentBgView addSubview:_batteryView];
-        [_contentBgView addSubview:_promptLabel];
+        [_contentBgView addSubview:_deviceNoLabel];
         [_contentBgView addSubview:_reconnectButton];
 
         
@@ -71,7 +70,10 @@
     }
     return self;
 }
-
+-(void)setDeviceNo:(NSString *)deviceNo{
+    _deviceNo = deviceNo;
+    _deviceNoLabel.text = [NSString stringWithFormat:@"开锁器编号：%@",deviceNo];
+}
 -(void)setBattery:(NSInteger)battery{
     _battery = battery;
     [_batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",(long)battery] forState:UIControlStateNormal];
@@ -101,7 +103,7 @@
                 
                 weakSelf.statusLabel.frame = CGRectMake(0, contentBgViewHeight-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
                 
-                weakSelf.batteryView.frame = weakSelf.reconnectButton.frame = weakSelf.promptLabel.frame = CGRectZero;
+                weakSelf.batteryView.frame = weakSelf.reconnectButton.frame = weakSelf.deviceNoLabel.frame = CGRectZero;
             }
                 break;
             case QHBLEConnecting:
@@ -115,14 +117,14 @@
                 
                 weakSelf.statusLabel.frame = CGRectMake(0, contentBgViewHeight-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
                 
-                weakSelf.batteryView.frame = weakSelf.reconnectButton.frame = weakSelf.promptLabel.frame = CGRectZero;
+                weakSelf.batteryView.frame = weakSelf.reconnectButton.frame = weakSelf.deviceNoLabel.frame = CGRectZero;
             }
                 break;
             case QHBLEConnected:
             {
                 weakSelf.statusImageView.image = QHBLE_CONNECTED_IMAGE;
                 weakSelf.statusLabel.textColor = THEME_GREEN;
-                weakSelf.statusLabel.text = [NSString stringWithFormat:@"开锁器%@已连接",_deviceNo];
+                weakSelf.statusLabel.text = @"开锁器蓝牙连接成功";
                 [weakSelf.batteryView setTitle:[NSString stringWithFormat:@"电量：%ld%%",(long)weakSelf.battery] forState:UIControlStateNormal];
                 
                 
@@ -131,8 +133,8 @@
                 weakSelf.contentBgView.frame = CGRectMake(0, (CGRectGetHeight(self.bounds)-contentBgViewHeight)/2, CGRectGetWidth(self.bounds), contentBgViewHeight);
                 weakSelf.statusImageView.frame = CGRectMake((CGRectGetWidth(weakSelf.contentBgView.bounds)-statusImageViewHeight)/2, 0, statusImageViewHeight, statusImageViewHeight);
                 
-                weakSelf.promptLabel.frame = CGRectMake(0, contentBgViewHeight-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
-                weakSelf.batteryView.frame = CGRectMake(0, CGRectGetMinY(weakSelf.promptLabel.frame)-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
+                weakSelf.deviceNoLabel.frame = CGRectMake(0, contentBgViewHeight-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
+                weakSelf.batteryView.frame = CGRectMake(0, CGRectGetMinY(weakSelf.deviceNoLabel.frame)-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
                 weakSelf.statusLabel.frame = CGRectMake(0, CGRectGetMinY(weakSelf.batteryView.frame)-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
                 
                 weakSelf.reconnectButton.frame = CGRectZero;
@@ -154,7 +156,7 @@
                 weakSelf.reconnectButton.frame = CGRectMake(0, contentBgViewHeight-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
                 
                 weakSelf.statusLabel.frame = CGRectMake(0, CGRectGetMinY(weakSelf.reconnectButton.frame)-STATUS_LABEL_HEIGHT, CGRectGetWidth(weakSelf.contentBgView.bounds), STATUS_LABEL_HEIGHT);
-                weakSelf.batteryView.frame = weakSelf.promptLabel.frame = CGRectZero;
+                weakSelf.batteryView.frame = weakSelf.deviceNoLabel.frame = CGRectZero;
             }
                 break;
                 
