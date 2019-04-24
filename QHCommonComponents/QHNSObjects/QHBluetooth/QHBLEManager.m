@@ -37,11 +37,12 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 @interface QHBLEManager()<CBCentralManagerDelegate,CBPeripheralDelegate>
 {
     int _currentScanIndex;
-    dispatch_source_t _heartTimer;
+    
     dispatch_source_t _batteryTimer;
     
 }
 @property (nonatomic, strong)dispatch_source_t connectTimeoutTimer;
+@property (nonatomic, strong)dispatch_source_t heartTimer;;
 @property (nonatomic, strong)NSString *peripheralName;//蓝牙锁设备名
 @property (nonatomic, strong)NSArray *serviceUUIDArray;//蓝牙设备服务ids
 
@@ -128,8 +129,8 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
                 if (count == 6) {
                     dispatch_cancel(weakSelf.connectTimeoutTimer);
                     
-                    if (!self.cbPeripheral) {
-                        [self.centralManager stopScan];//停止扫描
+                    if (!weakSelf.cbPeripheral) {
+                        [weakSelf.centralManager stopScan];//停止扫描
                         weakSelf.peripheralDisconnected?weakSelf.peripheralDisconnected(@"未搜索到设备，请确保设备是否开启"):NULL;
                     }
                 }
@@ -154,6 +155,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         if (_cbPeripheral) {
             //当前链接了一个蓝牙需要取消其连接并清空私钥以保证能获取新的私钥
             [_centralManager cancelPeripheralConnection:_cbPeripheral];
+            _cbPeripheral = nil;
             _privateKey = 0;
         }
         _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
@@ -303,9 +305,12 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
                     dispatch_source_set_timer(_heartTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
                     __weak typeof(self) weakSelf = self;
                     dispatch_source_set_event_handler(_heartTimer, ^{
-                        Byte byte[] = {0xAA};
-                        [self.cbPeripheral writeValue:[NSData dataWithBytes:byte length:sizeof(byte)] forCharacteristic:weakSelf.heardCharacteristic type:CBCharacteristicWriteWithResponse];
-                        
+                        if (weakSelf.cbPeripheral.state == CBPeripheralStateConnected) {
+                            Byte byte[] = {0xAA};
+                            [weakSelf.cbPeripheral writeValue:[NSData dataWithBytes:byte length:sizeof(byte)] forCharacteristic:weakSelf.heardCharacteristic type:CBCharacteristicWriteWithResponse];
+                        }else{
+                            dispatch_cancel(weakSelf.heartTimer);
+                        }
                     });
                     dispatch_resume(_heartTimer);
                     
@@ -478,8 +483,9 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     _batteryTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_batteryTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
+    typeof(self) __weak weakSelf = self;
     dispatch_source_set_event_handler(_batteryTimer, ^{
-        [self.cbPeripheral readValueForCharacteristic:self.batteryCharacteristic];
+        [weakSelf.cbPeripheral readValueForCharacteristic:weakSelf.batteryCharacteristic];
     });
     dispatch_resume(_batteryTimer);
 }
