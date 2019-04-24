@@ -596,7 +596,9 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 
 -(void)setBattery:(void (^)(NSInteger))battery{
     _battery = battery;
-    [self.cbPeripheral readValueForCharacteristic:_batteryCharacteristic];
+    if (_batteryCharacteristic) {
+        [self.cbPeripheral readValueForCharacteristic:_batteryCharacteristic];
+    }
 }
 
 /** Ack回复 */
