@@ -51,6 +51,7 @@
     CGPoint point = [gesture locationInView:self];
     CLLocationCoordinate2D coordinate = [self convertPoint:point toCoordinateFromView:self];//通过点转化为其经纬度坐标
     
+    __weak typeof(self) weakSelf = self;
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
     [geocoder reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude] completionHandler:^(NSArray *placemarks,NSError *error){
         CLPlacemark *placemark = placemarks.firstObject;
@@ -60,9 +61,8 @@
         annotation.coordinate = placemark.location.coordinate;
         annotation.title = placemark.name;
         annotation.subtitle = [NSString stringWithFormat:@"%@%@%@%@%@",placemark.administrativeArea?placemark.administrativeArea:@"",placemark.locality?placemark.locality:@"",placemark.subLocality?placemark.subLocality:@"",placemark.thoroughfare?placemark.thoroughfare:@"",placemark.subThoroughfare?placemark.subThoroughfare:@""];
-        self.annotation = annotation;
-        self.state = QHReverseGeocodeStatusFinished;
-        
+        weakSelf.annotation = annotation;
+        weakSelf.state = QHReverseGeocodeStatusFinished;
     }];//获取信息
 }
 
@@ -71,7 +71,6 @@
     [rephotographAlert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:NULL]];
 
     __weak typeof(self) weakSelf = self;
-
     [[self getInstalledMapAppWithEndLocation:_annotation.coordinate] enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [rephotographAlert addAction:[UIAlertAction actionWithTitle:obj[@"title"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if ([action.title isEqual:@"苹果地图"]) {
@@ -85,7 +84,6 @@
     UIResponder *responder = self;
     while ((responder = [responder nextResponder])){
         if ([responder isKindOfClass: [UIViewController class]]){
-            
             [(UIViewController *)responder presentViewController:rephotographAlert animated:YES completion:NULL];
             break;
         }
@@ -146,7 +144,11 @@
     
     [self removeAnnotations:self.annotations];
     [self showAnnotations:@[annotation] animated:YES];
-    [self selectAnnotation:annotation animated:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf selectAnnotation:annotation animated:YES];
+    });
     
     self.regionCenter = annotation.coordinate;
 }

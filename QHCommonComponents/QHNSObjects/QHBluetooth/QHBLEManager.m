@@ -50,7 +50,7 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
 @property (nonatomic, assign)int privateKey;//蓝牙锁私钥
 
 @property (nonatomic, strong)NSString *lockNo;//锁（盒子）设备No
-@property (nonatomic, strong)NSData *lockNoDate;//锁（盒子）设备NoData
+@property (nonatomic, strong)NSData *currentDeviceData;//当前硬件设备二进制解密数据
 @property (nonatomic, strong)NSString *softwareVersion;//开锁器软件版本
 
 @property (nonatomic, copy)void (^openLockSuccess)(NSString *lockId);//开锁成功block
@@ -220,7 +220,6 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
  @param peripheral 连接失败的设备
  @param error 错误信息
  */
-
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if ([peripheral.name isEqualToString:_peripheralName]) {
@@ -236,7 +235,6 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
  @param peripheral 连接断开的设备
  @param error 错误信息
  */
-
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if ([peripheral.name isEqualToString:_peripheralName]) {
@@ -272,7 +270,6 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
  @param service 特征对应的服务
  @param error 错误信息
  */
-
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
     if (error) {
@@ -382,7 +379,6 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
             [[AMRPlayerTool share] playAudioWithName:@"connect" type:@"mp3"];
         }
     }
-    
 }
 
 
@@ -417,28 +413,22 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
         }
     }
     else if (characteristic == _reportCharacteristic){
-        //获取到箱锁设备信息
-        Byte *bytes = (Byte *)[receiveDecryptedDate bytes];
-        int length = @([receiveDecryptedDate length]).intValue;
-        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
-        for (NSInteger i=3; i<length; i++) {
-            if (i > 2 && i < 10) {
-                int c = (int)bytes[i];
-                [arr addObject:[self ToHex:c]];
-            }
+        // 校验
+        BOOL flag = [self vilidateFromData:receiveDecryptedDate];
+        if (flag) {
+            // 重新交换秘钥
+            [self exchangeSecretKey];
+            return;
         }
         
-        _lockNo = [arr componentsJoinedByString:@""];
+        //获取到箱锁设备信息
+        _lockNo = [self getLockerNoFromData:receiveDecryptedDate];
         if (_lockNo.length) {
-            _lockNoDate = receiveDecryptedDate;
-            [self sendAck:_lockNoDate];//接收到设备信息之后通知开锁器停止上报
+            _currentDeviceData = receiveDecryptedDate;
+            [self sendAck:_currentDeviceData];//接收到设备信息之后通知开锁器停止上报
             
             //获取锁状态
-            Byte byte = 0x00;
-            if (length ==13) {
-                byte = bytes[10];
-            }
-            
+            Byte byte = [self getCommandFromData:receiveDecryptedDate];
             QHLockerStatus lockerStatus = byte;
             __weak typeof(_lockNo) weakLockNo = _lockNo;
             _receivedLockerNo?_receivedLockerNo(weakLockNo,lockerStatus):NULL;
@@ -554,9 +544,67 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
     NSData *retData = [NSData dataWithBytes:retByte length:length];
     return retData;
 }
+// 获取锁的编号
+- (NSString *)getLockerNoFromData:(NSData *)data {
+    Byte *bytes = (Byte *)[data bytes];
+    int length = @([data length]).intValue;
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger i=3; i<length; i++) {
+        if (i > 2 && i < 10) {
+            int c = (int)bytes[i];
+            [arr addObject:[self ToHex:c]];
+        }
+    }
+    return [arr componentsJoinedByString:@""];
+}
 
+// 获取状态位
+- (Byte)getCommandFromData:(NSData *)data {
+    Byte *bytes = (Byte *)[data bytes];
+    int length = @([data length]).intValue;
+    Byte byte = 0x00;
+    if (length ==13) {
+        byte = bytes[10];
+    }
+    return byte;
+}
+/** 获取校验位的值 */
+- (int)vilidateFromData:(NSData *)data {
+    Byte *bytes = (Byte *)[data bytes];
+    // 加入命令位
+    int vilidate = (int)bytes[2];
+    vilidate += (int)bytes[3];
+    vilidate += (int)bytes[4];
+    vilidate += (int)bytes[5];
+    vilidate += (int)bytes[6];
+    vilidate += (int)bytes[7];
+    vilidate += (int)bytes[8];
+    vilidate += (int)bytes[9];
+    vilidate += (int)bytes[10];
+//    // 加入数据位，包含盒子ID，数据控制位
+//    for (int i = 3; i < length; i++) {
+//        if (i > 2 && i < 10) {
+//            vilidate += (int)bytes[i];
+//        }
+//    }
+    // 取最低的一个字节放入数据位的控制位中
+    Byte countVilidateByte = (Byte)vilidate;
+    int countVilidate = (int)countVilidateByte;
+    int retVilidate = (int)bytes[11];
+    return countVilidate != retVilidate;
+}
+
+// 秘钥交换
+- (void)exchangeSecretKey {
+    if (!_privateKey) {
+        [self.cbPeripheral setNotifyValue:YES forCharacteristic:_keyCharacteristic];// 设置监听
+        [self.cbPeripheral writeValue:_publicKeyData forCharacteristic:_keyCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+/** 开锁 */
 - (void)openLockSuccess:(void (^)(NSString * _Nonnull))success failure:(void (^)(NSString * _Nullable, NSString * _Nullable))failure{
-    if (!_lockNoDate) {
+    if (!_currentDeviceData) {
         failure(nil,@"请用开锁器接触盒子锁");
         return;
     }
@@ -564,12 +612,12 @@ NSString *const SoftwareVersionCharacteristicsUUID = @"2a28";
     _openLockFailed = failure;
     
     /** 发起开锁命令 */
-        int length = 13;
-        Byte *retByte = malloc(sizeof(Byte)*(length));
-        retByte[0] = 0x2A;
-        retByte[1] = 0x08;
-        retByte[2] = 0x03; // 命令
-    Byte *bytes = (Byte *)[_lockNoDate bytes];
+    int length = 13;
+    Byte *retByte = malloc(sizeof(Byte)*(length));
+    retByte[0] = 0x2A;
+    retByte[1] = 0x08;
+    retByte[2] = 0x03; // 命令
+    Byte *bytes = (Byte *)[_currentDeviceData bytes];
         int j = 0;
         // 校验位累加开始
         int vilidate = (int)0x03;
