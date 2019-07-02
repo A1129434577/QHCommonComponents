@@ -14,12 +14,23 @@
 
 @implementation QHAlertController
 
+-(void)loadView{
+    [super loadView];
+    
+    if (self.alertTitle) {
+        UIView *topHLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(self.alertMessageLabel.frame)+2, CGRectGetWidth(self.view.frame), 0.5)];
+        topHLineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [self.view addSubview:topHLineView];
+    }
+    
+}
+
 - (LBAlertActionButton *)addActionTitle:(NSString *)actionTitle action:(void (^)(LBAlertActionButton * _Nonnull))action{
     
     CGFloat actionBtnWidth = CGRectGetWidth(self.view.bounds)/(self.buttonArray.count+1);
     
     [self.buttonArray enumerateObjectsUsingBlock:^(LBAlertActionButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.frame = CGRectMake(0, 0, actionBtnWidth, 40);
+        obj.bounds = CGRectMake(0, 0, actionBtnWidth, CGRectGetHeight(obj.bounds));
     }];
     
     __weak typeof(self) weakSelf = self;
@@ -28,25 +39,19 @@
             action?action(sender):NULL;
         }];
     }];
+    [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     actionBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [actionBtn setTitle:actionTitle forState:UIControlStateNormal];
-    [self addActionButton:actionBtn];
+    UIView *actionBtnHline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(actionBtn.frame), 0.5)];
+    actionBtnHline.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [actionBtn addSubview:actionBtnHline];
+    UIView *actionBtnVline = [[UIView alloc] initWithFrame:CGRectMake(-0.5, 0, 1, CGRectGetHeight(actionBtn.bounds))];
+    actionBtnVline.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [actionBtn addSubview:actionBtnVline];
     
-    if (self.buttonArray.count > 1) {
-        LBAlertActionButton *firstActionButton = [self.buttonArray firstObject];
-        firstActionButton.backgroundColor = [UIColor whiteColor];
-        [firstActionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        if (self.buttonArray.count%2 == 0) {
-            actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
-            [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        }else{
-            actionBtn.backgroundColor = [UIColor whiteColor];
-            [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        }
-    }else{
-        actionBtn.backgroundColor = UIColorRGBHex(0x10c6bf);
-        [actionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
+    
+    
+    [self addActionButton:actionBtn];
     
     return actionBtn;
 }
