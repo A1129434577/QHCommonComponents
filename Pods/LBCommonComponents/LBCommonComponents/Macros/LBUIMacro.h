@@ -17,4 +17,41 @@
 #define SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 #define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 
+
+#define SafeAreaInsetsTop \
+({\
+CGFloat safeAreaInsetsTop = 20;\
+if (@available(iOS 11.0, *)) {\
+safeAreaInsetsTop = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.top;\
+if(self.navigationController && !self.navigationController.navigationBar.hidden){\
+safeAreaInsetsTop += CGRectGetHeight(self.navigationController.navigationBar.frame);\
+}\
+}else if(self.navigationController && !self.navigationController.navigationBar.hidden){\
+safeAreaInsetsTop = CGRectGetMaxY(self.navigationController.navigationBar.frame);\
+}\
+safeAreaInsetsTop;\
+})
+
+
+#define SafeAreaInsetsBottom \
+({\
+CGFloat safeAreaInsetsBottom = 0;\
+if (@available(iOS 11.0, *)) {\
+safeAreaInsetsBottom = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.bottom;\
+if(self.tabBarController && !self.tabBarController.tabBar.hidden && !self.hidesBottomBarWhenPushed){\
+safeAreaInsetsBottom  = CGRectGetHeight(self.tabBarController.tabBar.frame);\
+}\
+}else if(self.tabBarController && !self.tabBarController.tabBar.hidden && !self.hidesBottomBarWhenPushed){\
+safeAreaInsetsBottom = CGRectGetHeight(self.tabBarController.tabBar.frame);\
+}\
+safeAreaInsetsBottom;\
+})
+
+
+#define SafeAreaInsetsTopAndBottom \
+({\
+SafeAreaInsetsTop + SafeAreaInsetsBottom;\
+})
+
+
 #endif /* LBUIMacro_h */

@@ -34,7 +34,7 @@
     }];
     
     __weak typeof(self) weakSelf = self;
-    LBAlertActionButton *actionBtn = [[LBAlertActionButton alloc] initWithFrame:CGRectMake(0, 0, actionBtnWidth, 40) action:^(LBAlertActionButton *sender) {
+    LBAlertActionButton *actionBtn = [[LBAlertActionButton alloc] initWithBounds:CGRectMake(0, 0, actionBtnWidth, 40) action:^(LBAlertActionButton *sender) {
         [weakSelf dismissViewControllerAnimated:YES completion:^{
             action?action(sender):NULL;
         }];

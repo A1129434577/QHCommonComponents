@@ -1,1 +1,1 @@
-../../../LBCommonComponents/LBCommonComponents/UIViews/UIViewInit/UIButton+LBInit.h
+../../../LBCommonComponents/LBCommonComponents/Category/UIView+Init/UIButton+LBInit.h

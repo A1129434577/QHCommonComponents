@@ -1,1 +1,1 @@
-../../../LBCommonComponents/LBCommonComponents/UIViews/UIViewInit/UILabel+LBInit.h
+../../../LBCommonComponents/LBCommonComponents/Category/UIView+Init/UILabel+LBInit.h

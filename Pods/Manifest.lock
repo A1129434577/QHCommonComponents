@@ -1,63 +1,27 @@
 PODS:
-  - LBCommonComponents (0.0.3):
-    - LBCommonComponents/Category (= 0.0.3)
-    - LBCommonComponents/Macros (= 0.0.3)
-    - LBCommonComponents/NSObjects (= 0.0.3)
-    - LBCommonComponents/UIViewControllers (= 0.0.3)
-    - LBCommonComponents/UIViews (= 0.0.3)
-  - LBCommonComponents/Category (0.0.3):
-    - "LBCommonComponents/Category/NSDate+ToString (= 0.0.3)"
-    - "LBCommonComponents/Category/NSNull+InternalNullExtention (= 0.0.3)"
-    - "LBCommonComponents/Category/NSString+ToDate (= 0.0.3)"
-    - "LBCommonComponents/Category/UIColor+ConvertToImage (= 0.0.3)"
-    - LBCommonComponents/Macros
-  - "LBCommonComponents/Category/NSDate+ToString (0.0.3)":
-    - LBCommonComponents/Macros
-  - "LBCommonComponents/Category/NSNull+InternalNullExtention (0.0.3)":
-    - LBCommonComponents/Macros
-  - "LBCommonComponents/Category/NSString+ToDate (0.0.3)":
-    - LBCommonComponents/Macros
-  - "LBCommonComponents/Category/UIColor+ConvertToImage (0.0.3)":
-    - LBCommonComponents/Macros
-  - LBCommonComponents/Macros (0.0.3)
-  - LBCommonComponents/NSObjects (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/NSObjects/LBCustemPresentTransitions (= 0.0.3)
-    - LBCommonComponents/NSObjects/LBEncrypt (= 0.0.3)
-  - LBCommonComponents/NSObjects/LBCustemPresentTransitions (0.0.3):
-    - LBCommonComponents/Macros
-  - LBCommonComponents/NSObjects/LBEncrypt (0.0.3):
-    - LBCommonComponents/Macros
-  - LBCommonComponents/UIViewControllers (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/NSObjects/LBCustemPresentTransitions
-    - LBCommonComponents/UIViewControllers/LBAlertController (= 0.0.3)
-    - LBCommonComponents/UIViewControllers/LBItemsSelectViewController (= 0.0.3)
-    - LBCommonComponents/UIViewControllers/LBWebViewController (= 0.0.3)
-  - LBCommonComponents/UIViewControllers/LBAlertController (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/NSObjects/LBCustemPresentTransitions
-  - LBCommonComponents/UIViewControllers/LBItemsSelectViewController (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/NSObjects/LBCustemPresentTransitions
-  - LBCommonComponents/UIViewControllers/LBWebViewController (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/NSObjects/LBCustemPresentTransitions
-  - LBCommonComponents/UIViews (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/UIViews/LBCodeGetButton (= 0.0.3)
-    - LBCommonComponents/UIViews/LBFunctionalTextField (= 0.0.3)
-    - LBCommonComponents/UIViews/LBTitleAndInputCell (= 0.0.3)
-    - LBCommonComponents/UIViews/UIViewInit (= 0.0.3)
-  - LBCommonComponents/UIViews/LBCodeGetButton (0.0.3):
-    - LBCommonComponents/Macros
-  - LBCommonComponents/UIViews/LBFunctionalTextField (0.0.3):
-    - LBCommonComponents/Macros
-  - LBCommonComponents/UIViews/LBTitleAndInputCell (0.0.3):
-    - LBCommonComponents/Macros
-    - LBCommonComponents/UIViews/LBFunctionalTextField
-  - LBCommonComponents/UIViews/UIViewInit (0.0.3):
-    - LBCommonComponents/Macros
+  - LBAlertController (0.0.1):
+    - LBCustemPresentTransitions
+  - LBCommonComponents (1.0.1):
+    - LBCommonComponents/Category (= 1.0.1)
+    - LBCommonComponents/Macros (= 1.0.1)
+  - LBCommonComponents/Category (1.0.1):
+    - "LBCommonComponents/Category/NSDate+ToString (= 1.0.1)"
+    - "LBCommonComponents/Category/NSNull+Safe (= 1.0.1)"
+    - "LBCommonComponents/Category/NSString+ToDate (= 1.0.1)"
+    - "LBCommonComponents/Category/UIColor+ToImage (= 1.0.1)"
+    - "LBCommonComponents/Category/UIImage+ChangedColor (= 1.0.1)"
+    - "LBCommonComponents/Category/UIView+Geometry (= 1.0.1)"
+    - "LBCommonComponents/Category/UIView+Init (= 1.0.1)"
+  - "LBCommonComponents/Category/NSDate+ToString (1.0.1)"
+  - "LBCommonComponents/Category/NSNull+Safe (1.0.1)"
+  - "LBCommonComponents/Category/NSString+ToDate (1.0.1)"
+  - "LBCommonComponents/Category/UIColor+ToImage (1.0.1)"
+  - "LBCommonComponents/Category/UIImage+ChangedColor (1.0.1)"
+  - "LBCommonComponents/Category/UIView+Geometry (1.0.1)"
+  - "LBCommonComponents/Category/UIView+Init (1.0.1)"
+  - LBCommonComponents/Macros (1.0.1)
+  - LBCustemPresentTransitions (0.0.1)
+  - LBEncrypt (0.0.1)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -65,24 +29,33 @@ PODS:
   - XHPayKit (1.0.3)
 
 DEPENDENCIES:
+  - LBAlertController
   - LBCommonComponents
+  - LBCustemPresentTransitions
+  - LBEncrypt
   - SDWebImage
   - SVProgressHUD
   - XHPayKit
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
+    - LBAlertController
     - LBCommonComponents
+    - LBCustemPresentTransitions
+    - LBEncrypt
     - SDWebImage
     - SVProgressHUD
     - XHPayKit
 
 SPEC CHECKSUMS:
-  LBCommonComponents: f0b8cca245a2b9952bbe02d2cd444894e3432779
+  LBAlertController: 9c00ba77479405383a7e9c0b20beece1be60b2ee
+  LBCommonComponents: 1db4e1522015b988149dbc585c1ee88ccb3d90bf
+  LBCustemPresentTransitions: 0f051727d59b2517169c10d4a1f30ca6f172d81c
+  LBEncrypt: 3a1ae2fd81591433fc24ebd3420f713def962d7c
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   XHPayKit: 068bb626d1591df95caf97eeb1682d875c20f7d9
 
-PODFILE CHECKSUM: b45b0468bc5b2d170f6d4448aef2587d2030da44
+PODFILE CHECKSUM: 11ee38c3bde68a9187ec91c1df4fa15572e0f62e
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.3

@@ -9,16 +9,16 @@
 #import "NSDate+LBToString.h"
 
 @implementation NSDate (LBToString)
-+ (NSString *)convertTimeInterval:(NSTimeInterval )timeInterval toStringWithFormat:(NSString *)format {
++ (NSString *)timeInterval:(NSTimeInterval )timeInterval toStringWithFormat:(NSString *)format {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:format];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     return [dateFormatter stringFromDate:date];
 }
 +(NSString *)currentDateStringWithFormat:(NSString *)format{
-    return [[NSDate date] convertToStringWithFormat:format];
+    return [[NSDate date] stringWithFormat:format];
 }
-- (NSString *)convertToStringWithFormat:(NSString *)format {
+- (NSString *)stringWithFormat:(NSString *)format {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:format];
     return [dateFormatter stringFromDate:self];

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (LBToDate)
-- (NSDate *)convertToDateWithFormat:(NSString *)format;
+- (NSDate *)dateWithFormat:(NSString *)format;
 @end
 
 NS_ASSUME_NONNULL_END

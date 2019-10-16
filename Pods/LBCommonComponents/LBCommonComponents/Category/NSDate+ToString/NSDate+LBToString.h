@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDate (LBToString)
-+ (NSString *)convertTimeInterval:(NSTimeInterval )timeInterval toStringWithFormat:(NSString *)format;
-+(NSString *)currentDateStringWithFormat:(NSString *)format;
-- (NSString *)convertToStringWithFormat:(NSString *)format;
++ (NSString *)timeInterval:(NSTimeInterval )timeInterval toStringWithFormat:(NSString *)format;
++ (NSString *)currentDateStringWithFormat:(NSString *)format;
+- (NSString *)stringWithFormat:(NSString *)format;
 @end
 
 NS_ASSUME_NONNULL_END

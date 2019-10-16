@@ -97,13 +97,9 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/LBCommonComponents/LBCommonComponents/UIViewControllers/LBWebViewController/ic_back.png"
-  install_resource "${PODS_ROOT}/LBCommonComponents/LBCommonComponents/UIViewControllers/LBWebViewController/ic_forward.png"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/LBCommonComponents/LBCommonComponents/UIViewControllers/LBWebViewController/ic_back.png"
-  install_resource "${PODS_ROOT}/LBCommonComponents/LBCommonComponents/UIViewControllers/LBWebViewController/ic_forward.png"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 fi
 

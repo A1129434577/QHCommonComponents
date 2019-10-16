@@ -9,8 +9,9 @@
 #import "NSString+LBToDate.h"
 
 @implementation NSString (LBToDate)
-- (NSDate *)convertToDateWithFormat:(NSString *)format {
+- (NSDate *)dateWithFormat:(NSString *)format {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
     [dateFormatter setDateFormat:format];
     return [dateFormatter dateFromString:self];
 }
